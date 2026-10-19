@@ -1,0 +1,81 @@
+# Versioned data inventory for QA-002 (FR-001). Every persisted field must appear here.
+# Retention keys refer to proposed values in apps/api Privacy options and remain pending approval (OD-1, OD-2).
+version: 1
+classes:
+  personal: Identifies or can be linked to a person
+  sensitive: Higher harm if exposed
+  temporary: Short-lived by design
+  non_sensitive: Not linked to an individual
+retention_keys:
+  until_deletion: Kept until the parent deletes the child profile or account (AUTH-007)
+  guest_lifetime: Guest token lifetime (proposed 24 h)
+  speech_lease: Speech session lease (proposed 15 s)
+  audit_policy: Audit retention to be set by Security (open)
+tables:
+  consent_records:
+    purpose_of_table: Parent consent decisions, append-only
+    collection_point: Parent consent screen
+    recipients: [backend]
+    fields:
+      Id: { class: non_sensitive, purpose: Record identity, retention: until_deletion, deletion: with child profile }
+      ParentId: { class: personal, purpose: Owner of the decision, retention: until_deletion, deletion: with account }
+      ChildId: { class: personal, purpose: Child the consent applies to, retention: until_deletion, deletion: with child profile }
+      Purpose: { class: non_sensitive, purpose: What the consent covers, retention: until_deletion, deletion: with child profile }
+      NoticeVersion: { class: non_sensitive, purpose: Which notice the parent saw, retention: until_deletion, deletion: with child profile }
+      Decision: { class: sensitive, purpose: Granted, denied, or withdrawn, retention: until_deletion, deletion: with child profile }
+      DecidedAt: { class: non_sensitive, purpose: Decision time, retention: until_deletion, deletion: with child profile }
+      CorrelationId: { class: non_sensitive, purpose: Link to request trace, retention: until_deletion, deletion: with child profile }
+      IdempotencyKey: { class: non_sensitive, purpose: Safe retries, retention: until_deletion, deletion: with child profile }
+  speech_sessions:
+    purpose_of_table: Short backend-issued leases allowing speech; no audio or transcript
+    collection_point: Speech start and heartbeat
+    recipients: [backend]
+    fields:
+      Id: { class: temporary, purpose: Lease identity, retention: speech_lease, deletion: cleanup after expiry }
+      ChildId: { class: personal, purpose: Child using speech, retention: speech_lease, deletion: cleanup after expiry }
+      ConsentRecordId: { class: non_sensitive, purpose: Consent relied upon, retention: speech_lease, deletion: cleanup after expiry }
+      StartedAt: { class: temporary, purpose: Lease start, retention: speech_lease, deletion: cleanup after expiry }
+      ExpiresAt: { class: temporary, purpose: Lease end, retention: speech_lease, deletion: cleanup after expiry }
+      RevokedAt: { class: temporary, purpose: Withdrawal revocation, retention: speech_lease, deletion: cleanup after expiry }
+  audit_events:
+    purpose_of_table: Minimized security and consent audit trail, append-only
+    collection_point: Backend actions
+    recipients: [designated security and privacy staff]
+    fields:
+      Id: { class: non_sensitive, purpose: Event identity, retention: audit_policy, deletion: per audit policy }
+      OccurredAt: { class: non_sensitive, purpose: Event time, retention: audit_policy, deletion: per audit policy }
+      ActorRole: { class: non_sensitive, purpose: Role of actor, retention: audit_policy, deletion: per audit policy }
+      Action: { class: non_sensitive, purpose: What happened, retention: audit_policy, deletion: per audit policy }
+      SubjectRef: { class: personal, purpose: Keyed pseudonym of the child, retention: audit_policy, deletion: per audit policy }
+      Outcome: { class: non_sensitive, purpose: Success, denied, or failed, retention: audit_policy, deletion: per audit policy }
+      CorrelationId: { class: non_sensitive, purpose: Trace linkage, retention: audit_policy, deletion: per audit policy }
+  privacy_requests:
+    purpose_of_table: Parent access and deletion requests (execution belongs to AUTH-007)
+    collection_point: Privacy request screen
+    recipients: [backend]
+    fields:
+      Id: { class: non_sensitive, purpose: Request identity, retention: until_deletion, deletion: with account }
+      ParentId: { class: personal, purpose: Requester, retention: until_deletion, deletion: with account }
+      ChildId: { class: personal, purpose: Subject of the request, retention: until_deletion, deletion: with child profile }
+      Type: { class: non_sensitive, purpose: Access or deletion, retention: until_deletion, deletion: with account }
+      Status: { class: non_sensitive, purpose: Progress, retention: until_deletion, deletion: with account }
+      IdempotencyKey: { class: non_sensitive, purpose: Safe retries, retention: until_deletion, deletion: with account }
+      CreatedAt: { class: non_sensitive, purpose: Submission time, retention: until_deletion, deletion: with account }
+      VerifiedAt: { class: non_sensitive, purpose: Verification time, retention: until_deletion, deletion: with account }
+      DueAt: { class: non_sensitive, purpose: Target completion date, retention: until_deletion, deletion: with account }
+      CompletedAt: { class: non_sensitive, purpose: Completion time, retention: until_deletion, deletion: with account }
+  retention_runs:
+    purpose_of_table: Records of cleanup attempts so failures can be retried and seen
+    collection_point: Retention worker
+    recipients: [operators]
+    fields:
+      Id: { class: non_sensitive, purpose: Run identity, retention: audit_policy, deletion: per audit policy }
+      StartedAt: { class: non_sensitive, purpose: Run start, retention: audit_policy, deletion: per audit policy }
+      FinishedAt: { class: non_sensitive, purpose: Run end, retention: audit_policy, deletion: per audit policy }
+      Outcome: { class: non_sensitive, purpose: Result, retention: audit_policy, deletion: per audit policy }
+      ItemsDeleted: { class: non_sensitive, purpose: Count only, retention: audit_policy, deletion: per audit policy }
+      FailureCode: { class: non_sensitive, purpose: Sanitized failure code, retention: audit_policy, deletion: per audit policy }
+not_stored:
+  - raw child audio
+  - child speech transcripts
+  - child real names or precise dates of birth (nickname and age band only)

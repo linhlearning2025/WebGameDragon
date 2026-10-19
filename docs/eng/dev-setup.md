@@ -39,6 +39,28 @@ For hosted PostgreSQL, use its hostname, port, database, username, and password 
 network access to the development environment. The API MUST fail fast if this setting is missing;
 neither logs nor health responses may disclose its value.
 
+## Privacy Settings
+
+The API also fails fast without `Privacy__AuditPseudonymKey`, the secret used to pseudonymize child
+references in audit events. Set it in the shell or an untracked local environment file and never
+commit it. `dotnet ef` starts the API host, so it needs this setting and the connection string.
+
+```powershell
+$env:Privacy__AuditPseudonymKey = '<set-locally-random-secret>'
+```
+
+| Setting | Default | Notes |
+|---|---|---|
+| `Privacy__SpeechEnabled` | `false` | Microphone speaking stays off until a speech approach is approved (QA-002 OD-3). |
+| `Privacy__SpeechLeaseSeconds` | 15 (Development only) | Proposed; must be set explicitly outside Development. |
+| `Privacy__GuestLifetimeHours` | 24 (Development only) | Proposed, pending approval; must be set explicitly outside Development. |
+| `Privacy__GuestDeletionDelayHours` | 24 (Development only) | Proposed, pending approval; must be set explicitly outside Development. |
+| `Privacy__PrivacyRequestTargetDays` | 30 (Development only) | Proposed, pending approval; must be set explicitly outside Development. |
+| `Privacy__BackupPurgeDays` | 30 (Development only) | Proposed, pending approval; must be set explicitly outside Development. |
+
+Outside Development the API also redirects HTTP to HTTPS and sends HSTS. Privacy documents are in
+[docs/privacy](../privacy/).
+
 ## Restore Dependencies
 
 From the repository root:
@@ -46,7 +68,7 @@ From the repository root:
 ```powershell
 pnpm install --frozen-lockfile
 dotnet tool restore
-dotnet restore apps/api/DragonEnglishKids.Api.csproj --locked-mode
+dotnet restore apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --locked-mode
 ```
 
 The JavaScript graph is pinned by `pnpm-lock.yaml`; NuGet packages are pinned by central package

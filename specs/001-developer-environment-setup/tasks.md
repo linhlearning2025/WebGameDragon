@@ -72,7 +72,7 @@ setup, migration, missing-configuration, and readiness behavior.
 
 - [X] T008 [P] [US1] Add API startup tests for missing required configuration and safe error output in
   `apps/api/tests/DragonEnglishKids.Api.Tests/StartupConfigurationTests.cs`.
-- [ ] T009 [P] [US1] Add health contract tests for `/health/live` plus ready/unready PostgreSQL
+- [X] T009 [P] [US1] Add health contract tests for `/health/live` plus ready/unready PostgreSQL
   probe outcomes in `apps/api/tests/DragonEnglishKids.Api.Tests/ReadinessEndpointTests.cs` and an
   environment-gated real PostgreSQL probe test in
   `apps/api/tests/DragonEnglishKids.Api.Tests/PostgresReadinessIntegrationTests.cs`; verify using

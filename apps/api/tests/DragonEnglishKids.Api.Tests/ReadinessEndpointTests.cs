@@ -60,6 +60,7 @@ public sealed class ReadinessEndpointTests
                 builder.UseSetting(
                     "ConnectionStrings:Default",
                     "Host=localhost;Database=dev;Username=dev;Password=test-secret");
+                builder.UseSetting("Privacy:AuditPseudonymKey", "test-only-audit-key");
                 builder.ConfigureServices(services =>
                 {
                     services.RemoveAll<IDatabaseReadinessProbe>();

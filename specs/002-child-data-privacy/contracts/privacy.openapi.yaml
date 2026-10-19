@@ -1,0 +1,196 @@
+openapi: 3.1.0
+info:
+  title: Dragon English Kids Privacy API (PROPOSED - DRAFT)
+  version: 0.1.0
+  description: >
+    Proposed contract for QA-002. Not approved for production; requires Product, Privacy, Security,
+    and Legal approval. Parent-only endpoints require a signed-in parent who owns the child.
+paths:
+  /api/v1/children/{childId}/consents:
+    get:
+      summary: Parent views consent history for their own child
+      parameters:
+        - { name: childId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        "200":
+          description: Consent history
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ConsentHistory" }
+        "403": { $ref: "#/components/responses/Problem" }
+  /api/v1/children/{childId}/consents/{purpose}:
+    put:
+      summary: Record a consent decision (grant, deny, withdraw)
+      parameters:
+        - { name: childId, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: purpose, in: path, required: true, schema: { $ref: "#/components/schemas/Purpose" } }
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/ConsentDecisionRequest" }
+            example: { decision: granted, noticeVersion: "2026-10-a" }
+      responses:
+        "200":
+          description: Decision recorded (also returned on idempotent replay)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/ConsentState" }
+        "403": { $ref: "#/components/responses/Problem" }
+        "409": { $ref: "#/components/responses/Problem" }
+  /api/v1/children/{childId}/speech-sessions:
+    post:
+      summary: Ask the backend whether speech may start
+      parameters:
+        - { name: childId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        "200":
+          description: Speech allowed for a short lease
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SpeechSessionGrant" }
+        "403":
+          description: Consent required, speech disabled, or caller is a guest; client shows the non-microphone alternative
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+              example: { type: "consent_required", title: "Consent required", status: 403 }
+        "503":
+          description: Privacy state unavailable; fails closed
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+  /api/v1/privacy/notice:
+    get:
+      summary: Get the current consent notice and its version
+      parameters:
+        - { name: purpose, in: query, required: true, schema: { $ref: "#/components/schemas/Purpose" } }
+      responses:
+        "200":
+          description: Current notice (wording pending Legal approval)
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/NoticeDocument" }
+  /api/v1/children/{childId}/speech-sessions/{speechSessionId}/heartbeat:
+    post:
+      summary: Renew a speech session lease while consent stays valid
+      parameters:
+        - { name: childId, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: speechSessionId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        "200":
+          description: Lease renewed
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/SpeechSessionGrant" }
+        "403":
+          description: Consent withdrawn or session revoked; the client MUST stop capture
+          content:
+            application/problem+json:
+              schema: { $ref: "#/components/schemas/Problem" }
+  /api/v1/children/{childId}/privacy-requests:
+    post:
+      summary: Submit an access or deletion request (verification required)
+      description: >
+        Status starts as pending_verification. AUTH-001 and AUTH-005 own the verification step
+        (parental gate and account email confirmation) that moves it to accepted.
+      parameters:
+        - { name: childId, in: path, required: true, schema: { type: string, format: uuid } }
+        - { name: Idempotency-Key, in: header, required: true, schema: { type: string } }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/PrivacyRequestCreate" }
+      responses:
+        "202":
+          description: Accepted for verification
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PrivacyRequestStatus" }
+        "403": { $ref: "#/components/responses/Problem" }
+  /api/v1/privacy-requests/{requestId}:
+    get:
+      summary: Parent views request status
+      parameters:
+        - { name: requestId, in: path, required: true, schema: { type: string, format: uuid } }
+      responses:
+        "200":
+          description: Status
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/PrivacyRequestStatus" }
+        "403": { $ref: "#/components/responses/Problem" }
+components:
+  responses:
+    Problem:
+      description: Standard problem response without sensitive data
+      content:
+        application/problem+json:
+          schema: { $ref: "#/components/schemas/Problem" }
+  schemas:
+    Purpose:
+      type: string
+      enum: [microphone_speech]
+    Decision:
+      type: string
+      enum: [granted, denied, withdrawn]
+    ConsentDecisionRequest:
+      type: object
+      required: [decision, noticeVersion]
+      properties:
+        decision: { $ref: "#/components/schemas/Decision" }
+        noticeVersion: { type: string }
+    ConsentState:
+      type: object
+      required: [purpose, decision, noticeVersion, decidedAt, valid]
+      properties:
+        purpose: { $ref: "#/components/schemas/Purpose" }
+        decision: { $ref: "#/components/schemas/Decision" }
+        noticeVersion: { type: string }
+        decidedAt: { type: string, format: date-time }
+        valid: { type: boolean, description: "False when the notice was materially changed" }
+    ConsentHistory:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          items: { $ref: "#/components/schemas/ConsentState" }
+    SpeechSessionGrant:
+      type: object
+      required: [speechSessionId, expiresAt]
+      properties:
+        speechSessionId: { type: string, format: uuid }
+        expiresAt: { type: string, format: date-time }
+    PrivacyRequestCreate:
+      type: object
+      required: [type]
+      properties:
+        type: { type: string, enum: [access, deletion] }
+    PrivacyRequestStatus:
+      type: object
+      required: [requestId, type, status, dueAt]
+      properties:
+        requestId: { type: string, format: uuid }
+        type: { type: string, enum: [access, deletion] }
+        status:
+          type: string
+          enum: [pending_verification, accepted, in_progress, completed, rejected]
+        dueAt: { type: string, format: date-time }
+    NoticeDocument:
+      type: object
+      required: [purpose, noticeVersion, content]
+      properties:
+        purpose: { $ref: "#/components/schemas/Purpose" }
+        noticeVersion: { type: string }
+        content: { type: string, description: "Plain-language notice; final wording pending Legal" }
+    Problem:
+      type: object
+      required: [type, title, status]
+      properties:
+        type: { type: string }
+        title: { type: string }
+        status: { type: integer }
+        traceId: { type: string }

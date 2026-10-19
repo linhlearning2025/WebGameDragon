@@ -34,6 +34,22 @@ $env:ConnectionStrings__Default = 'Host=localhost;Port=5432;Database=dragon_engl
 For hosted PostgreSQL, replace the host and database credentials with the development endpoint's
 values. Never commit the real connection string.
 
+### Privacy Settings
+
+The API refuses to start without a secret key used to pseudonymize child references in audit
+events. Generate a random value locally and never commit it:
+
+```powershell
+$env:Privacy__AuditPseudonymKey = '<set-locally-random-secret>'
+```
+
+Microphone speaking is off by default (`Privacy__SpeechEnabled=false`) and stays off until a speech
+approach is approved. In Development the policy values have proposed defaults; in every other
+environment these must be set explicitly because they are pending approval: `Privacy__SpeechLeaseSeconds`,
+`Privacy__GuestLifetimeHours`, `Privacy__GuestDeletionDelayHours`, `Privacy__PrivacyRequestTargetDays`,
+and `Privacy__BackupPurgeDays`. See [docs/privacy](docs/privacy/) for the data inventory, processor
+checklist, speech-processing notes, and audit-access procedure.
+
 ### Restore and Migrate
 
 From the repository root, restore the pinned dependencies and EF migration tool:
@@ -41,11 +57,12 @@ From the repository root, restore the pinned dependencies and EF migration tool:
 ```powershell
 pnpm install --frozen-lockfile
 dotnet tool restore
-dotnet restore apps/api/DragonEnglishKids.Api.csproj --locked-mode
+dotnet restore apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --locked-mode
 ```
 
 After the API's `DbContext` and migrations are implemented, apply migrations to the configured
-development database:
+development database (the `PrivacyFoundation` migration creates the consent, speech session,
+privacy request, audit, and retention tables):
 
 ```powershell
 dotnet ef database update --project apps/api/DragonEnglishKids.Api.csproj --startup-project apps/api/DragonEnglishKids.Api.csproj

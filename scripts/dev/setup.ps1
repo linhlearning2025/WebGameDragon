@@ -26,13 +26,17 @@ try {
         throw 'Required environment variable ConnectionStrings__Default is missing.'
     }
 
+    if ([string]::IsNullOrWhiteSpace($env:Privacy__AuditPseudonymKey)) {
+        throw 'Required environment variable Privacy__AuditPseudonymKey is missing.'
+    }
+
     & pnpm install --frozen-lockfile
     if ($LASTEXITCODE -ne 0) { throw 'pnpm dependency restore failed.' }
 
     & dotnet tool restore
     if ($LASTEXITCODE -ne 0) { throw '.NET local tool restore failed.' }
 
-    & dotnet restore 'apps/api/DragonEnglishKids.Api.csproj' --locked-mode
+    & dotnet restore 'apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj' --locked-mode
     if ($LASTEXITCODE -ne 0) { throw '.NET dependency restore failed.' }
 
     Write-Host 'Prerequisites validated and dependencies restored.'

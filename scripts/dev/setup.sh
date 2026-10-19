@@ -30,9 +30,14 @@ if [[ -z "${ConnectionStrings__Default:-}" ]]; then
   exit 1
 fi
 
+if [[ -z "${Privacy__AuditPseudonymKey:-}" ]]; then
+  printf 'Required environment variable Privacy__AuditPseudonymKey is missing.\n' >&2
+  exit 1
+fi
+
 pnpm install --frozen-lockfile
 dotnet tool restore
-dotnet restore apps/api/DragonEnglishKids.Api.csproj --locked-mode
+dotnet restore apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --locked-mode
 
 printf 'Prerequisites validated and dependencies restored.\n'
 printf 'Apply migrations with: pnpm db:migrate\n'
