@@ -1,0 +1,59 @@
+﻿id,title,domain,milestone,priority,depends_on,source,file
+PLAT-001,Thiết lập monorepo và môi trường phát triển,platform,M0,P0,,PRD §1; Tech Stack,tickets/platform/PLAT-001-thiet-lap-monorepo-va-moi-truong-phat-trien.md
+PLAT-002,Event Bridge React ↔ Phaser có kiểu dữ liệu,platform,M0,P0,PLAT-001,PRD §1 React-Phaser Event Bridge,tickets/platform/PLAT-002-event-bridge-react-phaser-co-kieu-du-lieu.md
+PLAT-003,"PostgreSQL schema, migrations và domain constraints",platform,M0,P0,PLAT-001,PRD §3.1–3.6,tickets/platform/PLAT-003-postgresql-schema-migrations-va-domain-constraints.md
+PLAT-004,"Correlation ID, logs, metrics và lỗi chuẩn",platform,M0,P1,PLAT-001,PRD §1 kiến trúc; yêu cầu vận hành bổ sung,tickets/platform/PLAT-004-correlation-id-logs-metrics-va-loi-chuan.md
+PLAT-005,"Kiểm soát truy cập theo phụ huynh, trẻ và khách",platform,M0,P0,PLAT-003,PRD §2; §5 API,tickets/platform/PLAT-005-kiem-soat-truy-cap-theo-phu-huynh-tre-va-khach.md
+AUTH-001,Đăng ký/đăng nhập phụ huynh bằng email,identity,M1,P0,PLAT-003;PLAT-005,PRD US-1.1; §3.1,tickets/identity/AUTH-001-ang-ky-ang-nhap-phu-huynh-bang-email.md
+AUTH-002,Đăng nhập Google OAuth phụ huynh,identity,M2,P1,AUTH-001,PRD US-1.1; §2 Account Claiming,tickets/identity/AUTH-002-ang-nhap-google-oauth-phu-huynh.md
+AUTH-003,Tạo/chỉnh sửa hồ sơ trẻ tối đa 5,identity,M1,P0,AUTH-001,PRD US-1.2; §3.3,tickets/identity/AUTH-003-tao-chinh-sua-ho-so-tre-toi-a-5.md
+AUTH-004,Chọn hồ sơ trẻ và cô lập session game,identity,M1,P0,AUTH-003;PLAT-002,PRD §1 Profile Switcher; US-1.2,tickets/identity/AUTH-004-chon-ho-so-tre-va-co-lap-session-game.md
+AUTH-005,Parental Gate với PIN băm và xác thực,identity,M1,P0,AUTH-001;PLAT-005,PRD US-1.3; POST /parent/verify-pin,tickets/identity/AUTH-005-parental-gate-voi-pin-bam-va-xac-thuc.md
+AUTH-006,Parental Gate thay thế bằng câu hỏi toán,identity,M3,P2,AUTH-005,PRD US-1.3,tickets/identity/AUTH-006-parental-gate-thay-the-bang-cau-hoi-toan.md
+AUTH-007,Xóa tài khoản/hồ sơ và xuất dữ liệu cơ bản,identity,M3,P1,AUTH-003;PLAT-005,PRD đối tượng trẻ em; yêu cầu privacy bổ sung,tickets/identity/AUTH-007-xoa-tai-khoan-ho-so-va-xuat-du-lieu-co-ban.md
+GUEST-001,Khởi tạo phiên guest và chọn độ tuổi,guest,M1,P0,PLAT-003,PRD US-2.1; POST /guest/init,tickets/guest/GUEST-001-khoi-tao-phien-guest-va-chon-o-tuoi.md
+GUEST-002,Phaser Placement Scene “Đánh thức Trứng Rồng”,guest,M1,P0,GUEST-001;GUEST-003;PLAT-002,PRD US-2.2,tickets/guest/GUEST-002-phaser-placement-scene-anh-thuc-trung-rong.md
+GUEST-003,Ngân hàng câu hỏi placement và ghi nhận câu trả lời,guest,M1,P0,GUEST-001;CONTENT-001,PRD US-2.3; /guest/submit-test,tickets/guest/GUEST-003-ngan-hang-cau-hoi-placement-va-ghi-nhan-cau-tra-loi.md
+GUEST-004,Thuật toán placement adaptive và phân tầng,guest,M1,P0,GUEST-003,PRD US-2.3,tickets/guest/GUEST-004-thuat-toan-placement-adaptive-va-phan-tang.md
+GUEST-005,"Nở trứng, tạo Rồng guest và tùy chỉnh",guest,M1,P0,GUEST-002;GUEST-004,PRD US-2.4; §2 user flow,tickets/guest/GUEST-005-no-trung-tao-rong-guest-va-tuy-chinh.md
+GUEST-006,Claim guest progress vào parent account một lần,guest,M1,P0,GUEST-005;AUTH-001;AUTH-003,PRD US-2.4; `/auth/register-and-claim`,tickets/guest/GUEST-006-claim-guest-progress-vao-parent-account-mot-lan.md
+CONTENT-001,Vocabulary catalog + metadata schema JSONB,content,M0,P0,PLAT-003,PRD §3.5,tickets/content/CONTENT-001-vocabulary-catalog-metadata-schema-jsonb.md
+CONTENT-002,Bộ dữ liệu chủ đề STARTERS/MOVERS và kiểm soát trùng,content,M1,P0,CONTENT-001,PRD tổng quan ~750 từ Cambridge,tickets/content/CONTENT-002-bo-du-lieu-chu-e-starters-movers-va-kiem-soat-trung.md
+CONTENT-003,Console Tool C# sinh nội dung AI có kiểm duyệt,content,M2,P1,CONTENT-001;CONTENT-002,PRD US-4.1,tickets/content/CONTENT-003-console-tool-c-sinh-noi-dung-ai-co-kiem-duyet.md
+CONTENT-004,TTS âm thanh thường/chậm và upload Cloudflare R2,content,M2,P1,CONTENT-003,PRD US-4.1; Storage & AI,tickets/content/CONTENT-004-tts-am-thanh-thuong-cham-va-upload-cloudflare-r2.md
+CONTENT-005,Quy trình review/publish học liệu và asset,content,M2,P1,CONTENT-004,PRD US-4.1; yêu cầu chất lượng bổ sung,tickets/content/CONTENT-005-quy-trinh-review-publish-hoc-lieu-va-asset.md
+ASSET-001,Chuẩn asset manifest và preload theo phiên bản,world-map,M1,P0,PLAT-001,Yêu cầu asset pack; PRD §1 Game Canvas,tickets/world-map/ASSET-001-chuan-asset-manifest-va-preload-theo-phien-ban.md
+ASSET-002,World Map responsive với camera và hit area,world-map,M1,P0,ASSET-001;PLAT-002,PRD Map; asset 2D cartoon; responsive,tickets/world-map/ASSET-002-world-map-responsive-voi-camera-va-hit-area.md
+ASSET-003,Rendering 4 node kỹ năng và trạng thái hoàn thành,world-map,M1,P0,ASSET-002;MAP-002,"PRD 4 mini-games, tiến trình và asset paths",tickets/world-map/ASSET-003-rendering-4-node-ky-nang-va-trang-thai-hoan-thanh.md
+ASSET-004,Sprite Rồng màu sắc và animation states,world-map,M2,P1,ASSET-001;DRAGON-001,"PRD US-3.1; folder dragon/baby, animations",tickets/world-map/ASSET-004-sprite-rong-mau-sac-va-animation-states.md
+MAP-001,"Domain model đảo, chủ đề và tuyến học",world-map,M1,P0,CONTENT-001;PLAT-003,PRD §2 World Map; Cambridge topics,tickets/world-map/MAP-001-domain-model-ao-chu-e-va-tuyen-hoc.md
+MAP-002,Quy tắc mở khóa và lưu stage progress,world-map,M1,P0,MAP-001;AUTH-003,PRD current_island_id/current_stage_id; 4 stages,tickets/world-map/MAP-002-quy-tac-mo-khoa-va-luu-stage-progress.md
+MAP-003,API world map theo profile + tier,world-map,M1,P0,MAP-001;MAP-002;PLAT-005,PRD current tier/map data; yêu cầu dynamic backend,tickets/world-map/MAP-003-api-world-map-theo-profile-tier.md
+MAP-004,Chọn stage và chuyển Phaser mini-game,world-map,M1,P0,ASSET-003;MAP-003;PLAT-002,PRD §2 Core game loop,tickets/world-map/MAP-004-chon-stage-va-chuyen-phaser-mini-game.md
+DRAGON-001,Hang Rồng render state và điều hướng,dragon,M1,P0,AUTH-003;ASSET-001,PRD US-3.1,tickets/dragon/DRAGON-001-hang-rong-render-state-va-ieu-huong.md
+DRAGON-002,"Cho Rồng ăn: tiêu hao food, cộng EXP",dragon,M2,P0,DRAGON-001;GAME-003,PRD POST `/game/{childId}/dragon/feed`,tickets/dragon/DRAGON-002-cho-rong-an-tieu-hao-food-cong-exp.md
+DRAGON-003,Tiến hóa Rồng 5 cấp theo EXP,dragon,M2,P1,DRAGON-002;ASSET-004,PRD US-3.1; evolution 1–5,tickets/dragon/DRAGON-003-tien-hoa-rong-5-cap-theo-exp.md
+DRAGON-004,Tương tác vuốt ve Rồng tăng Mood,dragon,M3,P2,DRAGON-001,PRD US-3.1 mood_score,tickets/dragon/DRAGON-004-tuong-tac-vuot-ve-rong-tang-mood.md
+DRAGON-005,Trang phục Rồng và entitlement cosmetics,dragon,M3,P2,DRAGON-001;PARENT-004,"PRD US-3.1, US-1.5",tickets/dragon/DRAGON-005-trang-phuc-rong-va-entitlement-cosmetics.md
+GAME-001,Stage-data API trộn 70% mới / 30% ôn SRS,gameplay,M2,P0,CONTENT-002;SRS-002;MAP-002,PRD US-4.2; GET stage-data,tickets/gameplay/GAME-001-stage-data-api-tron-70-moi-30-on-srs.md
+GAME-002,Ghi nhận kết quả stage idempotent và chống gian lận,gameplay,M2,P0,GAME-001;MAP-002;SRS-001,PRD POST stage-complete,tickets/gameplay/GAME-002-ghi-nhan-ket-qua-stage-idempotent-va-chong-gian-lan.md
+GAME-003,"Quy tắc thưởng food, EXP, stars",gameplay,M2,P0,GAME-002,PRD US-3.1; stage-complete; reward,tickets/gameplay/GAME-003-quy-tac-thuong-food-exp-stars.md
+GAME-004,"Khung mini-game chung, trạng thái và phản hồi tích cực",gameplay,M2,P0,PLAT-002;GAME-001,PRD US-3.2–3.5; no red X,tickets/gameplay/GAME-004-khung-mini-game-chung-trang-thai-va-phan-hoi-tich-cuc.md
+GAME-005,Listening — Rồng đớp mây đúng hình,gameplay,M2,P0,GAME-004,PRD US-3.2,tickets/gameplay/GAME-005-listening-rong-op-may-ung-hinh.md
+GAME-006,Reading — chọn từ phá đá,gameplay,M2,P0,GAME-004,PRD US-3.3,tickets/gameplay/GAME-006-reading-chon-tu-pha-a.md
+GAME-007,Spelling — ghép phonics xây cầu,gameplay,M2,P0,GAME-004;CONTENT-001,PRD US-3.4,tickets/gameplay/GAME-007-spelling-ghep-phonics-xay-cau.md
+GAME-008,"Speaking — quyền micro, capture và fallback",gameplay,M2,P0,GAME-004,PRD US-3.5; Mic HUD,tickets/gameplay/GAME-008-speaking-quyen-micro-capture-va-fallback.md
+GAME-009,Speaking — fuzzy matching và 2-strike effort-pass,gameplay,M2,P0,GAME-008;GAME-002,"PRD US-3.5 fuzzy, 2-Strike Auto-Pass",tickets/gameplay/GAME-009-speaking-fuzzy-matching-va-2-strike-effort-pass.md
+GAME-010,"Stage summary, replay và quay lại World Map",gameplay,M2,P0,GAME-002;GAME-003;MAP-004,PRD Core Game Loop; reward,tickets/gameplay/GAME-010-stage-summary-replay-va-quay-lai-world-map.md
+SRS-001,"Domain SRS mastery, streak và lịch ôn",srs,M2,P0,CONTENT-001;AUTH-003,PRD §3.6; 70/30 SRS,tickets/srs/SRS-001-domain-srs-mastery-streak-va-lich-on.md
+SRS-002,Query từ đến hạn và phân phối pool theo tier,srs,M2,P0,SRS-001;CONTENT-002,PRD US-4.2,tickets/srs/SRS-002-query-tu-en-han-va-phan-phoi-pool-theo-tier.md
+PARENT-001,API báo cáo tiến trình từ vựng và thời gian,parent,M3,P1,AUTH-003;SRS-001;GAME-002,PRD US-1.4; GET parent report,tickets/parent/PARENT-001-api-bao-cao-tien-trinh-tu-vung-va-thoi-gian.md
+PARENT-002,Parent Dashboard UI có lọc theo bé,parent,M3,P1,PARENT-001;AUTH-005,PRD US-1.4; §1 React parent layer,tickets/parent/PARENT-002-parent-dashboard-ui-co-loc-theo-be.md
+PARENT-003,Giới hạn thời gian chơi mỗi ngày có server policy,parent,M2,P0,AUTH-003;PLAT-005,PRD US-1.3; users.daily_limit_mins default 20,tickets/parent/PARENT-003-gioi-han-thoi-gian-choi-moi-ngay-co-server-policy.md
+PARENT-004,Donate QR và trạng thái supporter,parent,M3,P2,AUTH-005;AUTH-001,PRD US-1.5; users.is_supporter,tickets/parent/PARENT-004-donate-qr-va-trang-thai-supporter.md
+PARENT-005,Huy hiệu supporter và skin độc quyền,parent,M3,P2,PARENT-004;DRAGON-005,PRD US-1.5,tickets/parent/PARENT-005-huy-hieu-supporter-va-skin-oc-quyen.md
+QA-001,Đặc tả accessibility và UX an toàn cho trẻ 5–8,quality,M1,P0,PLAT-001,PRD target children; no red X,tickets/quality/QA-001-ac-ta-accessibility-va-ux-an-toan-cho-tre-58.md
+QA-002,"Chính sách dữ liệu trẻ em, consent và bảo vệ thông tin",quality,M0,P0,PLAT-001,"PRD guest, parent, mic; privacy cần bổ sung",tickets/quality/QA-002-chinh-sach-du-lieu-tre-em-consent-va-bao-ve-thong-tin.md
+QA-003,Contract tests và E2E 4 mini-game qua backend,quality,M2,P0,GAME-005;GAME-006;GAME-007;GAME-009;MAP-003,PRD §5 endpoints; integration quality,tickets/quality/QA-003-contract-tests-va-e2e-4-mini-game-qua-backend.md
+QA-004,"Hiệu năng âm thanh, preload và R2 CDN",quality,M2,P1,CONTENT-004;GAME-005;ASSET-001,PRD §1 audio dưới 100ms sau touch,tickets/quality/QA-004-hieu-nang-am-thanh-preload-va-r2-cdn.md
+QA-005,"Phát hành, backup/restore, feature flags và runbook",quality,M3,P1,PLAT-004;QA-003,PRD triển khai production; vận hành bổ sung,tickets/quality/QA-005-phat-hanh-backup-restore-feature-flags-va-runbook.md

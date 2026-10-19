@@ -1,0 +1,744 @@
+[
+  {
+    "id": "PLAT-001",
+    "domain": "platform",
+    "title": "Thiết lập monorepo và môi trường phát triển",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [],
+    "source": "PRD §1; Tech Stack",
+    "path": "tickets/platform/PLAT-001-thiet-lap-monorepo-va-moi-truong-phat-trien.md"
+  },
+  {
+    "id": "PLAT-002",
+    "domain": "platform",
+    "title": "Event Bridge React ↔ Phaser có kiểu dữ liệu",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "PRD §1 React-Phaser Event Bridge",
+    "path": "tickets/platform/PLAT-002-event-bridge-react-phaser-co-kieu-du-lieu.md"
+  },
+  {
+    "id": "PLAT-003",
+    "domain": "platform",
+    "title": "PostgreSQL schema, migrations và domain constraints",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "PRD §3.1–3.6",
+    "path": "tickets/platform/PLAT-003-postgresql-schema-migrations-va-domain-constraints.md"
+  },
+  {
+    "id": "PLAT-004",
+    "domain": "platform",
+    "title": "Correlation ID, logs, metrics và lỗi chuẩn",
+    "phase": "M0",
+    "priority": "P1",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "PRD §1 kiến trúc; yêu cầu vận hành bổ sung",
+    "path": "tickets/platform/PLAT-004-correlation-id-logs-metrics-va-loi-chuan.md"
+  },
+  {
+    "id": "PLAT-005",
+    "domain": "platform",
+    "title": "Kiểm soát truy cập theo phụ huynh, trẻ và khách",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [
+      "PLAT-003"
+    ],
+    "source": "PRD §2; §5 API",
+    "path": "tickets/platform/PLAT-005-kiem-soat-truy-cap-theo-phu-huynh-tre-va-khach.md"
+  },
+  {
+    "id": "AUTH-001",
+    "domain": "identity",
+    "title": "Đăng ký/đăng nhập phụ huynh bằng email",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "PLAT-003",
+      "PLAT-005"
+    ],
+    "source": "PRD US-1.1; §3.1",
+    "path": "tickets/identity/AUTH-001-ang-ky-ang-nhap-phu-huynh-bang-email.md"
+  },
+  {
+    "id": "AUTH-002",
+    "domain": "identity",
+    "title": "Đăng nhập Google OAuth phụ huynh",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "AUTH-001"
+    ],
+    "source": "PRD US-1.1; §2 Account Claiming",
+    "path": "tickets/identity/AUTH-002-ang-nhap-google-oauth-phu-huynh.md"
+  },
+  {
+    "id": "AUTH-003",
+    "domain": "identity",
+    "title": "Tạo/chỉnh sửa hồ sơ trẻ tối đa 5",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "AUTH-001"
+    ],
+    "source": "PRD US-1.2; §3.3",
+    "path": "tickets/identity/AUTH-003-tao-chinh-sua-ho-so-tre-toi-a-5.md"
+  },
+  {
+    "id": "AUTH-004",
+    "domain": "identity",
+    "title": "Chọn hồ sơ trẻ và cô lập session game",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "AUTH-003",
+      "PLAT-002"
+    ],
+    "source": "PRD §1 Profile Switcher; US-1.2",
+    "path": "tickets/identity/AUTH-004-chon-ho-so-tre-va-co-lap-session-game.md"
+  },
+  {
+    "id": "AUTH-005",
+    "domain": "identity",
+    "title": "Parental Gate với PIN băm và xác thực",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "AUTH-001",
+      "PLAT-005"
+    ],
+    "source": "PRD US-1.3; POST /parent/verify-pin",
+    "path": "tickets/identity/AUTH-005-parental-gate-voi-pin-bam-va-xac-thuc.md"
+  },
+  {
+    "id": "AUTH-006",
+    "domain": "identity",
+    "title": "Parental Gate thay thế bằng câu hỏi toán",
+    "phase": "M3",
+    "priority": "P2",
+    "deps": [
+      "AUTH-005"
+    ],
+    "source": "PRD US-1.3",
+    "path": "tickets/identity/AUTH-006-parental-gate-thay-the-bang-cau-hoi-toan.md"
+  },
+  {
+    "id": "AUTH-007",
+    "domain": "identity",
+    "title": "Xóa tài khoản/hồ sơ và xuất dữ liệu cơ bản",
+    "phase": "M3",
+    "priority": "P1",
+    "deps": [
+      "AUTH-003",
+      "PLAT-005"
+    ],
+    "source": "PRD đối tượng trẻ em; yêu cầu privacy bổ sung",
+    "path": "tickets/identity/AUTH-007-xoa-tai-khoan-ho-so-va-xuat-du-lieu-co-ban.md"
+  },
+  {
+    "id": "GUEST-001",
+    "domain": "guest",
+    "title": "Khởi tạo phiên guest và chọn độ tuổi",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "PLAT-003"
+    ],
+    "source": "PRD US-2.1; POST /guest/init",
+    "path": "tickets/guest/GUEST-001-khoi-tao-phien-guest-va-chon-o-tuoi.md"
+  },
+  {
+    "id": "GUEST-002",
+    "domain": "guest",
+    "title": "Phaser Placement Scene “Đánh thức Trứng Rồng”",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "GUEST-001",
+      "GUEST-003",
+      "PLAT-002"
+    ],
+    "source": "PRD US-2.2",
+    "path": "tickets/guest/GUEST-002-phaser-placement-scene-anh-thuc-trung-rong.md"
+  },
+  {
+    "id": "GUEST-003",
+    "domain": "guest",
+    "title": "Ngân hàng câu hỏi placement và ghi nhận câu trả lời",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "GUEST-001",
+      "CONTENT-001"
+    ],
+    "source": "PRD US-2.3; /guest/submit-test",
+    "path": "tickets/guest/GUEST-003-ngan-hang-cau-hoi-placement-va-ghi-nhan-cau-tra-loi.md"
+  },
+  {
+    "id": "GUEST-004",
+    "domain": "guest",
+    "title": "Thuật toán placement adaptive và phân tầng",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "GUEST-003"
+    ],
+    "source": "PRD US-2.3",
+    "path": "tickets/guest/GUEST-004-thuat-toan-placement-adaptive-va-phan-tang.md"
+  },
+  {
+    "id": "GUEST-005",
+    "domain": "guest",
+    "title": "Nở trứng, tạo Rồng guest và tùy chỉnh",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "GUEST-002",
+      "GUEST-004"
+    ],
+    "source": "PRD US-2.4; §2 user flow",
+    "path": "tickets/guest/GUEST-005-no-trung-tao-rong-guest-va-tuy-chinh.md"
+  },
+  {
+    "id": "GUEST-006",
+    "domain": "guest",
+    "title": "Claim guest progress vào parent account một lần",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "GUEST-005",
+      "AUTH-001",
+      "AUTH-003"
+    ],
+    "source": "PRD US-2.4; `/auth/register-and-claim`",
+    "path": "tickets/guest/GUEST-006-claim-guest-progress-vao-parent-account-mot-lan.md"
+  },
+  {
+    "id": "CONTENT-001",
+    "domain": "content",
+    "title": "Vocabulary catalog + metadata schema JSONB",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [
+      "PLAT-003"
+    ],
+    "source": "PRD §3.5",
+    "path": "tickets/content/CONTENT-001-vocabulary-catalog-metadata-schema-jsonb.md"
+  },
+  {
+    "id": "CONTENT-002",
+    "domain": "content",
+    "title": "Bộ dữ liệu chủ đề STARTERS/MOVERS và kiểm soát trùng",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "CONTENT-001"
+    ],
+    "source": "PRD tổng quan ~750 từ Cambridge",
+    "path": "tickets/content/CONTENT-002-bo-du-lieu-chu-e-starters-movers-va-kiem-soat-trung.md"
+  },
+  {
+    "id": "CONTENT-003",
+    "domain": "content",
+    "title": "Console Tool C# sinh nội dung AI có kiểm duyệt",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "CONTENT-001",
+      "CONTENT-002"
+    ],
+    "source": "PRD US-4.1",
+    "path": "tickets/content/CONTENT-003-console-tool-c-sinh-noi-dung-ai-co-kiem-duyet.md"
+  },
+  {
+    "id": "CONTENT-004",
+    "domain": "content",
+    "title": "TTS âm thanh thường/chậm và upload Cloudflare R2",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "CONTENT-003"
+    ],
+    "source": "PRD US-4.1; Storage & AI",
+    "path": "tickets/content/CONTENT-004-tts-am-thanh-thuong-cham-va-upload-cloudflare-r2.md"
+  },
+  {
+    "id": "CONTENT-005",
+    "domain": "content",
+    "title": "Quy trình review/publish học liệu và asset",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "CONTENT-004"
+    ],
+    "source": "PRD US-4.1; yêu cầu chất lượng bổ sung",
+    "path": "tickets/content/CONTENT-005-quy-trinh-review-publish-hoc-lieu-va-asset.md"
+  },
+  {
+    "id": "ASSET-001",
+    "domain": "world-map",
+    "title": "Chuẩn asset manifest và preload theo phiên bản",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "Yêu cầu asset pack; PRD §1 Game Canvas",
+    "path": "tickets/world-map/ASSET-001-chuan-asset-manifest-va-preload-theo-phien-ban.md"
+  },
+  {
+    "id": "ASSET-002",
+    "domain": "world-map",
+    "title": "World Map responsive với camera và hit area",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "ASSET-001",
+      "PLAT-002"
+    ],
+    "source": "PRD Map; asset 2D cartoon; responsive",
+    "path": "tickets/world-map/ASSET-002-world-map-responsive-voi-camera-va-hit-area.md"
+  },
+  {
+    "id": "ASSET-003",
+    "domain": "world-map",
+    "title": "Rendering 4 node kỹ năng và trạng thái hoàn thành",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "ASSET-002",
+      "MAP-002"
+    ],
+    "source": "PRD 4 mini-games, tiến trình và asset paths",
+    "path": "tickets/world-map/ASSET-003-rendering-4-node-ky-nang-va-trang-thai-hoan-thanh.md"
+  },
+  {
+    "id": "ASSET-004",
+    "domain": "world-map",
+    "title": "Sprite Rồng màu sắc và animation states",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "ASSET-001",
+      "DRAGON-001"
+    ],
+    "source": "PRD US-3.1; folder dragon/baby, animations",
+    "path": "tickets/world-map/ASSET-004-sprite-rong-mau-sac-va-animation-states.md"
+  },
+  {
+    "id": "MAP-001",
+    "domain": "world-map",
+    "title": "Domain model đảo, chủ đề và tuyến học",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "CONTENT-001",
+      "PLAT-003"
+    ],
+    "source": "PRD §2 World Map; Cambridge topics",
+    "path": "tickets/world-map/MAP-001-domain-model-ao-chu-e-va-tuyen-hoc.md"
+  },
+  {
+    "id": "MAP-002",
+    "domain": "world-map",
+    "title": "Quy tắc mở khóa và lưu stage progress",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "MAP-001",
+      "AUTH-003"
+    ],
+    "source": "PRD current_island_id/current_stage_id; 4 stages",
+    "path": "tickets/world-map/MAP-002-quy-tac-mo-khoa-va-luu-stage-progress.md"
+  },
+  {
+    "id": "MAP-003",
+    "domain": "world-map",
+    "title": "API world map theo profile + tier",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "MAP-001",
+      "MAP-002",
+      "PLAT-005"
+    ],
+    "source": "PRD current tier/map data; yêu cầu dynamic backend",
+    "path": "tickets/world-map/MAP-003-api-world-map-theo-profile-tier.md"
+  },
+  {
+    "id": "MAP-004",
+    "domain": "world-map",
+    "title": "Chọn stage và chuyển Phaser mini-game",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "ASSET-003",
+      "MAP-003",
+      "PLAT-002"
+    ],
+    "source": "PRD §2 Core game loop",
+    "path": "tickets/world-map/MAP-004-chon-stage-va-chuyen-phaser-mini-game.md"
+  },
+  {
+    "id": "DRAGON-001",
+    "domain": "dragon",
+    "title": "Hang Rồng render state và điều hướng",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "AUTH-003",
+      "ASSET-001"
+    ],
+    "source": "PRD US-3.1",
+    "path": "tickets/dragon/DRAGON-001-hang-rong-render-state-va-ieu-huong.md"
+  },
+  {
+    "id": "DRAGON-002",
+    "domain": "dragon",
+    "title": "Cho Rồng ăn: tiêu hao food, cộng EXP",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "DRAGON-001",
+      "GAME-003"
+    ],
+    "source": "PRD POST `/game/{childId}/dragon/feed`",
+    "path": "tickets/dragon/DRAGON-002-cho-rong-an-tieu-hao-food-cong-exp.md"
+  },
+  {
+    "id": "DRAGON-003",
+    "domain": "dragon",
+    "title": "Tiến hóa Rồng 5 cấp theo EXP",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "DRAGON-002",
+      "ASSET-004"
+    ],
+    "source": "PRD US-3.1; evolution 1–5",
+    "path": "tickets/dragon/DRAGON-003-tien-hoa-rong-5-cap-theo-exp.md"
+  },
+  {
+    "id": "DRAGON-004",
+    "domain": "dragon",
+    "title": "Tương tác vuốt ve Rồng tăng Mood",
+    "phase": "M3",
+    "priority": "P2",
+    "deps": [
+      "DRAGON-001"
+    ],
+    "source": "PRD US-3.1 mood_score",
+    "path": "tickets/dragon/DRAGON-004-tuong-tac-vuot-ve-rong-tang-mood.md"
+  },
+  {
+    "id": "DRAGON-005",
+    "domain": "dragon",
+    "title": "Trang phục Rồng và entitlement cosmetics",
+    "phase": "M3",
+    "priority": "P2",
+    "deps": [
+      "DRAGON-001",
+      "PARENT-004"
+    ],
+    "source": "PRD US-3.1, US-1.5",
+    "path": "tickets/dragon/DRAGON-005-trang-phuc-rong-va-entitlement-cosmetics.md"
+  },
+  {
+    "id": "GAME-001",
+    "domain": "gameplay",
+    "title": "Stage-data API trộn 70% mới / 30% ôn SRS",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "CONTENT-002",
+      "SRS-002",
+      "MAP-002"
+    ],
+    "source": "PRD US-4.2; GET stage-data",
+    "path": "tickets/gameplay/GAME-001-stage-data-api-tron-70-moi-30-on-srs.md"
+  },
+  {
+    "id": "GAME-002",
+    "domain": "gameplay",
+    "title": "Ghi nhận kết quả stage idempotent và chống gian lận",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-001",
+      "MAP-002",
+      "SRS-001"
+    ],
+    "source": "PRD POST stage-complete",
+    "path": "tickets/gameplay/GAME-002-ghi-nhan-ket-qua-stage-idempotent-va-chong-gian-lan.md"
+  },
+  {
+    "id": "GAME-003",
+    "domain": "gameplay",
+    "title": "Quy tắc thưởng food, EXP, stars",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-002"
+    ],
+    "source": "PRD US-3.1; stage-complete; reward",
+    "path": "tickets/gameplay/GAME-003-quy-tac-thuong-food-exp-stars.md"
+  },
+  {
+    "id": "GAME-004",
+    "domain": "gameplay",
+    "title": "Khung mini-game chung, trạng thái và phản hồi tích cực",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "PLAT-002",
+      "GAME-001"
+    ],
+    "source": "PRD US-3.2–3.5; no red X",
+    "path": "tickets/gameplay/GAME-004-khung-mini-game-chung-trang-thai-va-phan-hoi-tich-cuc.md"
+  },
+  {
+    "id": "GAME-005",
+    "domain": "gameplay",
+    "title": "Listening — Rồng đớp mây đúng hình",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-004"
+    ],
+    "source": "PRD US-3.2",
+    "path": "tickets/gameplay/GAME-005-listening-rong-op-may-ung-hinh.md"
+  },
+  {
+    "id": "GAME-006",
+    "domain": "gameplay",
+    "title": "Reading — chọn từ phá đá",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-004"
+    ],
+    "source": "PRD US-3.3",
+    "path": "tickets/gameplay/GAME-006-reading-chon-tu-pha-a.md"
+  },
+  {
+    "id": "GAME-007",
+    "domain": "gameplay",
+    "title": "Spelling — ghép phonics xây cầu",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-004",
+      "CONTENT-001"
+    ],
+    "source": "PRD US-3.4",
+    "path": "tickets/gameplay/GAME-007-spelling-ghep-phonics-xay-cau.md"
+  },
+  {
+    "id": "GAME-008",
+    "domain": "gameplay",
+    "title": "Speaking — quyền micro, capture và fallback",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-004"
+    ],
+    "source": "PRD US-3.5; Mic HUD",
+    "path": "tickets/gameplay/GAME-008-speaking-quyen-micro-capture-va-fallback.md"
+  },
+  {
+    "id": "GAME-009",
+    "domain": "gameplay",
+    "title": "Speaking — fuzzy matching và 2-strike effort-pass",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-008",
+      "GAME-002"
+    ],
+    "source": "PRD US-3.5 fuzzy, 2-Strike Auto-Pass",
+    "path": "tickets/gameplay/GAME-009-speaking-fuzzy-matching-va-2-strike-effort-pass.md"
+  },
+  {
+    "id": "GAME-010",
+    "domain": "gameplay",
+    "title": "Stage summary, replay và quay lại World Map",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-002",
+      "GAME-003",
+      "MAP-004"
+    ],
+    "source": "PRD Core Game Loop; reward",
+    "path": "tickets/gameplay/GAME-010-stage-summary-replay-va-quay-lai-world-map.md"
+  },
+  {
+    "id": "SRS-001",
+    "domain": "srs",
+    "title": "Domain SRS mastery, streak và lịch ôn",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "CONTENT-001",
+      "AUTH-003"
+    ],
+    "source": "PRD §3.6; 70/30 SRS",
+    "path": "tickets/srs/SRS-001-domain-srs-mastery-streak-va-lich-on.md"
+  },
+  {
+    "id": "SRS-002",
+    "domain": "srs",
+    "title": "Query từ đến hạn và phân phối pool theo tier",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "SRS-001",
+      "CONTENT-002"
+    ],
+    "source": "PRD US-4.2",
+    "path": "tickets/srs/SRS-002-query-tu-en-han-va-phan-phoi-pool-theo-tier.md"
+  },
+  {
+    "id": "PARENT-001",
+    "domain": "parent",
+    "title": "API báo cáo tiến trình từ vựng và thời gian",
+    "phase": "M3",
+    "priority": "P1",
+    "deps": [
+      "AUTH-003",
+      "SRS-001",
+      "GAME-002"
+    ],
+    "source": "PRD US-1.4; GET parent report",
+    "path": "tickets/parent/PARENT-001-api-bao-cao-tien-trinh-tu-vung-va-thoi-gian.md"
+  },
+  {
+    "id": "PARENT-002",
+    "domain": "parent",
+    "title": "Parent Dashboard UI có lọc theo bé",
+    "phase": "M3",
+    "priority": "P1",
+    "deps": [
+      "PARENT-001",
+      "AUTH-005"
+    ],
+    "source": "PRD US-1.4; §1 React parent layer",
+    "path": "tickets/parent/PARENT-002-parent-dashboard-ui-co-loc-theo-be.md"
+  },
+  {
+    "id": "PARENT-003",
+    "domain": "parent",
+    "title": "Giới hạn thời gian chơi mỗi ngày có server policy",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "AUTH-003",
+      "PLAT-005"
+    ],
+    "source": "PRD US-1.3; users.daily_limit_mins default 20",
+    "path": "tickets/parent/PARENT-003-gioi-han-thoi-gian-choi-moi-ngay-co-server-policy.md"
+  },
+  {
+    "id": "PARENT-004",
+    "domain": "parent",
+    "title": "Donate QR và trạng thái supporter",
+    "phase": "M3",
+    "priority": "P2",
+    "deps": [
+      "AUTH-005",
+      "AUTH-001"
+    ],
+    "source": "PRD US-1.5; users.is_supporter",
+    "path": "tickets/parent/PARENT-004-donate-qr-va-trang-thai-supporter.md"
+  },
+  {
+    "id": "PARENT-005",
+    "domain": "parent",
+    "title": "Huy hiệu supporter và skin độc quyền",
+    "phase": "M3",
+    "priority": "P2",
+    "deps": [
+      "PARENT-004",
+      "DRAGON-005"
+    ],
+    "source": "PRD US-1.5",
+    "path": "tickets/parent/PARENT-005-huy-hieu-supporter-va-skin-oc-quyen.md"
+  },
+  {
+    "id": "QA-001",
+    "domain": "quality",
+    "title": "Đặc tả accessibility và UX an toàn cho trẻ 5–8",
+    "phase": "M1",
+    "priority": "P0",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "PRD target children; no red X",
+    "path": "tickets/quality/QA-001-ac-ta-accessibility-va-ux-an-toan-cho-tre-58.md"
+  },
+  {
+    "id": "QA-002",
+    "domain": "quality",
+    "title": "Chính sách dữ liệu trẻ em, consent và bảo vệ thông tin",
+    "phase": "M0",
+    "priority": "P0",
+    "deps": [
+      "PLAT-001"
+    ],
+    "source": "PRD guest, parent, mic; privacy cần bổ sung",
+    "path": "tickets/quality/QA-002-chinh-sach-du-lieu-tre-em-consent-va-bao-ve-thong-tin.md"
+  },
+  {
+    "id": "QA-003",
+    "domain": "quality",
+    "title": "Contract tests và E2E 4 mini-game qua backend",
+    "phase": "M2",
+    "priority": "P0",
+    "deps": [
+      "GAME-005",
+      "GAME-006",
+      "GAME-007",
+      "GAME-009",
+      "MAP-003"
+    ],
+    "source": "PRD §5 endpoints; integration quality",
+    "path": "tickets/quality/QA-003-contract-tests-va-e2e-4-mini-game-qua-backend.md"
+  },
+  {
+    "id": "QA-004",
+    "domain": "quality",
+    "title": "Hiệu năng âm thanh, preload và R2 CDN",
+    "phase": "M2",
+    "priority": "P1",
+    "deps": [
+      "CONTENT-004",
+      "GAME-005",
+      "ASSET-001"
+    ],
+    "source": "PRD §1 audio dưới 100ms sau touch",
+    "path": "tickets/quality/QA-004-hieu-nang-am-thanh-preload-va-r2-cdn.md"
+  },
+  {
+    "id": "QA-005",
+    "domain": "quality",
+    "title": "Phát hành, backup/restore, feature flags và runbook",
+    "phase": "M3",
+    "priority": "P1",
+    "deps": [
+      "PLAT-004",
+      "QA-003"
+    ],
+    "source": "PRD triển khai production; vận hành bổ sung",
+    "path": "tickets/quality/QA-005-phat-hanh-backup-restore-feature-flags-va-runbook.md"
+  }
+]

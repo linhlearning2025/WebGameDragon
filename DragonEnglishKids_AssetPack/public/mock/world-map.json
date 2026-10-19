@@ -1,0 +1,376 @@
+{
+  "schemaVersion": 1,
+  "childId": "demo-child-001",
+  "childName": "Bé Rồng",
+  "dragon": {
+    "skin": "red",
+    "name": "Lửa Nhỏ",
+    "exp": 125,
+    "expToNextLevel": 200,
+    "mood": 83,
+    "evolutionLevel": 1
+  },
+  "progress": {
+    "completedStages": 11,
+    "totalStages": 36,
+    "totalStars": 31,
+    "maxStars": 108
+  },
+  "world": {
+    "width": 1600,
+    "height": 900,
+    "background": "sky_day",
+    "activeIslandId": "lair",
+    "islands": [
+      {
+        "id": "lair",
+        "name": "Hang Rồng",
+        "theme": "lair",
+        "x": 790,
+        "y": 438,
+        "unlocked": true,
+        "starsEarned": 6,
+        "stages": [
+          {
+            "stageId": "lair-listening",
+            "skill": "listening",
+            "state": "completed",
+            "stars": 3
+          },
+          {
+            "stageId": "lair-reading",
+            "skill": "reading",
+            "state": "completed",
+            "stars": 3
+          },
+          {
+            "stageId": "lair-spelling",
+            "skill": "spelling",
+            "state": "current",
+            "stars": 0
+          },
+          {
+            "stageId": "lair-speaking",
+            "skill": "speaking",
+            "state": "available",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "forest",
+        "name": "Đảo Động Vật",
+        "theme": "forest",
+        "x": 270,
+        "y": 224,
+        "unlocked": true,
+        "starsEarned": 6,
+        "stages": [
+          {
+            "stageId": "forest-listening",
+            "skill": "listening",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "forest-reading",
+            "skill": "reading",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "forest-spelling",
+            "skill": "spelling",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "forest-speaking",
+            "skill": "speaking",
+            "state": "available",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "food",
+        "name": "Đảo Đồ Ăn",
+        "theme": "food",
+        "x": 624,
+        "y": 180,
+        "unlocked": true,
+        "starsEarned": 4,
+        "stages": [
+          {
+            "stageId": "food-listening",
+            "skill": "listening",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "food-reading",
+            "skill": "reading",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "food-spelling",
+            "skill": "spelling",
+            "state": "available",
+            "stars": 0
+          },
+          {
+            "stageId": "food-speaking",
+            "skill": "speaking",
+            "state": "available",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "crystal",
+        "name": "Đảo Sắc Màu",
+        "theme": "crystal",
+        "x": 1040,
+        "y": 198,
+        "unlocked": true,
+        "starsEarned": 2,
+        "stages": [
+          {
+            "stageId": "crystal-listening",
+            "skill": "listening",
+            "state": "completed",
+            "stars": 2
+          },
+          {
+            "stageId": "crystal-reading",
+            "skill": "reading",
+            "state": "available",
+            "stars": 0
+          },
+          {
+            "stageId": "crystal-spelling",
+            "skill": "spelling",
+            "state": "available",
+            "stars": 0
+          },
+          {
+            "stageId": "crystal-speaking",
+            "skill": "speaking",
+            "state": "available",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "family",
+        "name": "Đảo Gia Đình",
+        "theme": "family",
+        "x": 1364,
+        "y": 245,
+        "unlocked": false,
+        "starsEarned": 0,
+        "stages": [
+          {
+            "stageId": "family-listening",
+            "skill": "listening",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "family-reading",
+            "skill": "reading",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "family-spelling",
+            "skill": "spelling",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "family-speaking",
+            "skill": "speaking",
+            "state": "locked",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "school",
+        "name": "Đảo Trường Học",
+        "theme": "school",
+        "x": 256,
+        "y": 570,
+        "unlocked": false,
+        "starsEarned": 0,
+        "stages": [
+          {
+            "stageId": "school-listening",
+            "skill": "listening",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "school-reading",
+            "skill": "reading",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "school-spelling",
+            "skill": "spelling",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "school-speaking",
+            "skill": "speaking",
+            "state": "locked",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "toys",
+        "name": "Đảo Đồ Chơi",
+        "theme": "toys",
+        "x": 1350,
+        "y": 566,
+        "unlocked": false,
+        "starsEarned": 0,
+        "stages": [
+          {
+            "stageId": "toys-listening",
+            "skill": "listening",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "toys-reading",
+            "skill": "reading",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "toys-spelling",
+            "skill": "spelling",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "toys-speaking",
+            "skill": "speaking",
+            "state": "locked",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "nature",
+        "name": "Đảo Thiên Nhiên",
+        "theme": "nature",
+        "x": 634,
+        "y": 714,
+        "unlocked": false,
+        "starsEarned": 0,
+        "stages": [
+          {
+            "stageId": "nature-listening",
+            "skill": "listening",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "nature-reading",
+            "skill": "reading",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "nature-spelling",
+            "skill": "spelling",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "nature-speaking",
+            "skill": "speaking",
+            "state": "locked",
+            "stars": 0
+          }
+        ]
+      },
+      {
+        "id": "castle",
+        "name": "Lâu Đài Movers",
+        "theme": "castle",
+        "x": 1082,
+        "y": 737,
+        "unlocked": false,
+        "starsEarned": 0,
+        "stages": [
+          {
+            "stageId": "castle-listening",
+            "skill": "listening",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "castle-reading",
+            "skill": "reading",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "castle-spelling",
+            "skill": "spelling",
+            "state": "locked",
+            "stars": 0
+          },
+          {
+            "stageId": "castle-speaking",
+            "skill": "speaking",
+            "state": "locked",
+            "stars": 0
+          }
+        ]
+      }
+    ],
+    "connections": [
+      [
+        "lair",
+        "forest"
+      ],
+      [
+        "lair",
+        "food"
+      ],
+      [
+        "lair",
+        "crystal"
+      ],
+      [
+        "lair",
+        "family"
+      ],
+      [
+        "lair",
+        "school"
+      ],
+      [
+        "lair",
+        "toys"
+      ],
+      [
+        "lair",
+        "nature"
+      ],
+      [
+        "lair",
+        "castle"
+      ]
+    ]
+  }
+}

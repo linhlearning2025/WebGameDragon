@@ -1,0 +1,25 @@
+name: M0 Foundation draft CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  draft-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Placeholder validation step
+        run: |
+          echo "This workflow is a draft M0 placeholder for the neutral Foundation gate."
+          echo "No production runtime proof is implied by this file."
+
+      - name: Document presence guard
+        run: |
+          test -f README.md
+          test -f docs/eng/toolchain-matrix.md
+          test -f docs/contracts/api.md

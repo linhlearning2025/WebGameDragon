@@ -1,0 +1,33 @@
+# Draft CODEOWNERS proposal for Dragon Academy
+# This is a review artifact only. It does not claim the target repository has been created or that these rules are active.
+
+# Global owners
+* @dragon/maintainers
+
+# Governance and repo policy
+/.github/ @dragon/architect @dragon/maintainers
+/docs/ @dragon/architect @dragon/qa @dragon/security
+
+# Frontend ownership
+/apps/web/ @dragon/frontend @dragon/architect
+/apps/web/src/ @dragon/frontend
+/apps/web/tests/ @dragon/frontend @dragon/qa
+
+# Backend ownership
+/apps/api/ @dragon/backend @dragon/architect
+/apps/api/Modules/ @dragon/backend
+/apps/api/tests/ @dragon/backend @dragon/qa
+
+# Content and schema ownership
+/content/ @dragon/curriculum @dragon/architect
+/content/schemas/ @dragon/architect @dragon/backend
+/content/fixtures/ @dragon/curriculum @dragon/qa
+
+# Tooling and validation ownership
+/tools/ @dragon/architect @dragon/backend
+/scripts/ @dragon/architect @dragon/backend
+
+# Security-sensitive or release files
+/.github/workflows/ @dragon/architect @dragon/maintainers @dragon/security
+# If branch protection is configured in the real provider, the target
+# default branch should require human approvals and block direct pushes.

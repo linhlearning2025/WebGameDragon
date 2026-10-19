@@ -1,0 +1,24 @@
+{
+  "_status": "PROPOSED - illustrative only, requires API sign-off",
+  "request": {
+    "stageSessionId": "ss_opaque_example",
+    "idempotencyKey": "e3db5cdd-7caa-4780-9809-cd5894188fd0",
+    "answers": [
+      {
+        "questionId": "q01",
+        "choiceId": "choice-apple",
+        "attemptNo": 1
+      }
+    ]
+  },
+  "response": {
+    "stageId": "animals-listening-01",
+    "stars": 2,
+    "expEarned": 10,
+    "foodRewards": {
+      "apple": 1
+    },
+    "nextAvailableStageId": "animals-reading-01",
+    "resultStatus": "COMPLETED"
+  }
+}

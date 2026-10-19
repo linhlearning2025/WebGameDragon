@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dragon English Kids — World Map Demo</title>
+<style>
+* { box-sizing: border-box; } body { margin:0; color:white; font: 600 16px system-ui,sans-serif; background:#213955; }
+#stage { position:relative; width:100vw; height:100dvh; overflow:hidden; touch-action:pan-y; }
+#stage canvas { display:block; width:100%; height:100%; object-fit:contain; }
+.toolbar { position:absolute;top:14px;left:14px;z-index:10;display:flex;gap:8px;flex-wrap:wrap;align-items:center }
+.toolbar button,.toolbar select { background:#fff8dc;border:3px solid #9d7447;border-radius:20px;padding:9px 13px;color:#55402f;font-weight:700;cursor:pointer }
+.legend {position:absolute;bottom:18px;left:20px;background:#223f62e9;border:2px solid #d2dcbf;border-radius:16px;padding:13px;max-width:390px;font-size:14px}
+#info {position:absolute;right:18px;bottom:16px;background:#fff0c9;color:#59432d;border:5px solid #aa7c50;border-radius:18px;padding:16px;width:min(380px,92vw);display:none}
+#info h2 {margin:0 0 8px;font-size:23px} .skills {display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.skills button {padding:9px;background:#75d46d;border:2px solid #367f59;border-radius:11px;font-weight:800;cursor:pointer}
+.skills button:disabled {background:#b3bdc4;color:#687280;cursor:not-allowed}
+@media (max-width:600px){.legend{display:none}.toolbar{top:6px;left:6px}.toolbar button{padding:5px}#info{right:4vw;bottom:8px}}
+</style></head><body><div id="stage"><canvas id="map"></canvas>
+<div class="toolbar"><button id="switch">Đổi trạng thái tiến trình</button><button id="reload">Tải lại API</button></div>
+<div class="legend">Chạm vào hòn đảo để chọn kỹ năng. Dữ liệu lấy từ <code>/mock/world-map.json</code> hoặc tham số <code>?api=...</code>.<br>Đây là bản demo HTML Canvas; xem <code>integration/phaser/</code> cho Phaser 3.</div>
+<div id="info"><h2 id="title"></h2><p id="desc"></p><div class="skills" id="skills"></div></div></div>
+<script>
+const W=1600,H=900,C=document.getElementById('map'),ctx=C.getContext('2d');let world,altered=false;
+const IMG={};const url=k=>'/assets/game/'+k+'.png';
+const images=[['sky','world-map/backgrounds/sky_day'],['mount','world-map/backgrounds/distant_mountains'],['dragon','dragon/baby/baby_red']];
+const activeImages=async data=>{
+ const items=[...images,...data.world.islands.map(i=>['island:'+i.theme,`world-map/islands/${i.theme}_island`]),...['available','current','completed','locked','review'].map(k=>['state:'+k,'level-nodes/states/'+k])];
+ await Promise.all(items.map(async ([key,path])=>{if(IMG[key])return;const im=new Image();im.src=url(path);await im.decode();IMG[key]=im;}));
+};
+function drawImg(key,x,y,w,h){const im=IMG[key];if(im)ctx.drawImage(im,x-w/2,y-h/2,w,h)}
+function draw(){if(!world)return;const cw=C.width,ch=C.height;ctx.clearRect(0,0,cw,ch);
+ const s=Math.min(cw/W,ch/H);const ox=(cw-W*s)/2,oy=(ch-H*s)/2;ctx.setTransform(s,0,0,s,ox,oy);
+ drawImg('sky',800,450,1600,900);drawImg('mount',800,450,1600,900);
+ const by=Object.fromEntries(world.world.islands.map(i=>[i.id,i]));
+ for(const [f,t] of world.world.connections){const a=by[f],b=by[t];ctx.strokeStyle='#95724c';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();ctx.strokeStyle='#ffda9b';ctx.lineWidth=6;ctx.stroke();}
+ for(const i of [...world.world.islands].sort((a,b)=>a.y-b.y)){
+ drawImg('island:'+i.theme,i.x,i.y,i.id==='lair'?340:310,i.id==='lair'?226:206);
+ drawImg('state:'+(i.unlocked?'available':'locked'),i.x,i.y-40,58,58);
+ ctx.font='bold 19px system-ui';ctx.textAlign='center';ctx.strokeStyle='#3c5272';ctx.lineWidth=6;ctx.strokeText(i.name,i.x,i.y+110);ctx.fillStyle='#fff';ctx.fillText(i.name,i.x,i.y+110);
+ }
+ drawImg('dragon',790,420,110,110);
+ ctx.fillStyle='#254361e5';ctx.strokeStyle='#ffe8b2';ctx.lineWidth=3;
+ ctx.beginPath();ctx.roundRect(22,18,460,80,24);ctx.fill();ctx.stroke();
+ ctx.font='bold 30px system-ui';ctx.fillStyle='#fff2af';ctx.fillText('🐲 Dragon English Kids',250,67);
+ ctx.beginPath();ctx.roundRect(1270,20,305,74,22);ctx.fill();ctx.stroke();
+ ctx.fillStyle='#ffeba2';ctx.fillText(`⭐ ${world.progress.totalStars}/${world.progress.maxStars}`,1420,67);
+ ctx.setTransform(1,0,0,1,0,0);
+}
+function click(e){const box=C.getBoundingClientRect(),px=(e.clientX-box.left)*C.width/box.width,py=(e.clientY-box.top)*C.height/box.height;
+ const s=Math.min(C.width/W,C.height/H),x=(px-(C.width-W*s)/2)/s,y=(py-(C.height-H*s)/2)/s;
+ const hits=world.world.islands.filter(i=>Math.abs(i.x-x)<125&&Math.abs(i.y-y+28)<100).sort((a,b)=>Math.hypot(a.x-x,a.y-y)-Math.hypot(b.x-x,b.y-y));
+ if(!hits.length)return;const i=hits[0];document.getElementById('info').style.display='block';document.getElementById('title').textContent=i.name;
+ document.getElementById('desc').textContent=i.unlocked?`Đã đạt ${i.starsEarned} sao. Chọn kỹ năng:`:'Đảo chưa mở khóa. Hoàn thành các bài trước nhé!';
+ const skills=document.getElementById('skills');skills.innerHTML='';
+ for(const a of i.stages){const b=document.createElement('button');b.textContent=`${{listening:'🎧 Nghe',reading:'📖 Đọc',spelling:'🔤 Ghép chữ',speaking:'🎤 Nói'}[a.skill]} · ${a.stars}★`;
+ b.disabled=!i.unlocked||a.state==='locked';b.onclick=()=>alert(`Stage ID: ${a.stageId}\nSkill: ${a.skill}\nTại app React, event này chuyển sang minigame.`);skills.append(b);}
+}
+async function load(){const api=new URLSearchParams(location.search).get('api')||'/mock/world-map.json';const res=await fetch(api);if(!res.ok)throw new Error('GET world-map failed '+res.status);world=await res.json();if(altered){world.progress.totalStars=87;world.dragon.exp=180;for(const i of world.world.islands){i.unlocked=true;i.starsEarned=12;for(const st of i.stages){st.state='completed';st.stars=3;}}}await activeImages(world);draw();}
+function resize(){const b=document.querySelector('#stage').getBoundingClientRect();C.width=b.width*devicePixelRatio;C.height=b.height*devicePixelRatio;draw()}
+C.addEventListener('click',click);document.getElementById('switch').onclick=()=>{altered=!altered;load().catch(alert)};document.getElementById('reload').onclick=()=>load().catch(alert);window.addEventListener('resize',resize);
+resize();load().catch(e=>{console.error(e);alert('Không thể tải dữ liệu. Hãy chạy qua HTTP server, không mở file:// trực tiếp.');});
+</script></body></html>

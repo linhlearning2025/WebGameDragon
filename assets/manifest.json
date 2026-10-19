@@ -1,0 +1,725 @@
+{
+  "project": "Dragon English Kids",
+  "version": "1.0.0",
+  "basePath": "/assets/game/",
+  "coordinateSystem": {
+    "worldWidth": 1600,
+    "worldHeight": 900,
+    "note": "Backend returns logical pixel positions; Phaser camera FIT handles responsive scaling."
+  },
+  "assets": {
+    "world-map/backgrounds/sky_day.png": {
+      "url": "/assets/game/world-map/backgrounds/sky_day.png",
+      "width": 1600,
+      "height": 900
+    },
+    "world-map/backgrounds/sky_sunset.png": {
+      "url": "/assets/game/world-map/backgrounds/sky_sunset.png",
+      "width": 1600,
+      "height": 900
+    },
+    "world-map/backgrounds/distant_mountains.png": {
+      "url": "/assets/game/world-map/backgrounds/distant_mountains.png",
+      "width": 1600,
+      "height": 900
+    },
+    "world-map/backgrounds/clouds_overlay.png": {
+      "url": "/assets/game/world-map/backgrounds/clouds_overlay.png",
+      "width": 1600,
+      "height": 900
+    },
+    "world-map/backgrounds/world_map_concept_reference.png": {
+      "url": "/assets/game/world-map/backgrounds/world_map_concept_reference.png",
+      "width": 1672,
+      "height": 941,
+      "usage": "reference-only; contains baked-in scenery, not modular"
+    },
+    "world-map/islands/lair_island.png": {
+      "url": "/assets/game/world-map/islands/lair_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/forest_island.png": {
+      "url": "/assets/game/world-map/islands/forest_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/food_island.png": {
+      "url": "/assets/game/world-map/islands/food_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/crystal_island.png": {
+      "url": "/assets/game/world-map/islands/crystal_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/family_island.png": {
+      "url": "/assets/game/world-map/islands/family_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/school_island.png": {
+      "url": "/assets/game/world-map/islands/school_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/toys_island.png": {
+      "url": "/assets/game/world-map/islands/toys_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/nature_island.png": {
+      "url": "/assets/game/world-map/islands/nature_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/castle_island.png": {
+      "url": "/assets/game/world-map/islands/castle_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/ice_island.png": {
+      "url": "/assets/game/world-map/islands/ice_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/desert_island.png": {
+      "url": "/assets/game/world-map/islands/desert_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/islands/grass_island.png": {
+      "url": "/assets/game/world-map/islands/grass_island.png",
+      "width": 512,
+      "height": 340
+    },
+    "world-map/decorations/tree_round.png": {
+      "url": "/assets/game/world-map/decorations/tree_round.png",
+      "width": 230,
+      "height": 235
+    },
+    "world-map/decorations/tree_pine.png": {
+      "url": "/assets/game/world-map/decorations/tree_pine.png",
+      "width": 230,
+      "height": 235
+    },
+    "world-map/decorations/tree_pink.png": {
+      "url": "/assets/game/world-map/decorations/tree_pink.png",
+      "width": 230,
+      "height": 235
+    },
+    "world-map/decorations/bush.png": {
+      "url": "/assets/game/world-map/decorations/bush.png",
+      "width": 180,
+      "height": 110
+    },
+    "world-map/decorations/flowers.png": {
+      "url": "/assets/game/world-map/decorations/flowers.png",
+      "width": 180,
+      "height": 110
+    },
+    "world-map/decorations/grass.png": {
+      "url": "/assets/game/world-map/decorations/grass.png",
+      "width": 150,
+      "height": 100
+    },
+    "world-map/decorations/rock.png": {
+      "url": "/assets/game/world-map/decorations/rock.png",
+      "width": 160,
+      "height": 120
+    },
+    "world-map/decorations/crystal.png": {
+      "url": "/assets/game/world-map/decorations/crystal.png",
+      "width": 150,
+      "height": 160
+    },
+    "world-map/decorations/wood_sign.png": {
+      "url": "/assets/game/world-map/decorations/wood_sign.png",
+      "width": 190,
+      "height": 190
+    },
+    "world-map/decorations/treasure_chest.png": {
+      "url": "/assets/game/world-map/decorations/treasure_chest.png",
+      "width": 190,
+      "height": 160
+    },
+    "world-map/decorations/mushroom.png": {
+      "url": "/assets/game/world-map/decorations/mushroom.png",
+      "width": 140,
+      "height": 140
+    },
+    "world-map/decorations/fence.png": {
+      "url": "/assets/game/world-map/decorations/fence.png",
+      "width": 220,
+      "height": 125
+    },
+    "world-map/decorations/waterfall.png": {
+      "url": "/assets/game/world-map/decorations/waterfall.png",
+      "width": 170,
+      "height": 250
+    },
+    "world-map/decorations/school_house.png": {
+      "url": "/assets/game/world-map/decorations/school_house.png",
+      "width": 230,
+      "height": 230
+    },
+    "world-map/decorations/home_house.png": {
+      "url": "/assets/game/world-map/decorations/home_house.png",
+      "width": 230,
+      "height": 230
+    },
+    "world-map/decorations/cloud.png": {
+      "url": "/assets/game/world-map/decorations/cloud.png",
+      "width": 220,
+      "height": 110
+    },
+    "world-map/decorations/flag.png": {
+      "url": "/assets/game/world-map/decorations/flag.png",
+      "width": 130,
+      "height": 190
+    },
+    "world-map/paths/bridge_wood.png": {
+      "url": "/assets/game/world-map/paths/bridge_wood.png",
+      "width": 400,
+      "height": 155
+    },
+    "world-map/paths/bridge_rope.png": {
+      "url": "/assets/game/world-map/paths/bridge_rope.png",
+      "width": 400,
+      "height": 210
+    },
+    "world-map/paths/path_straight.png": {
+      "url": "/assets/game/world-map/paths/path_straight.png",
+      "width": 256,
+      "height": 256
+    },
+    "world-map/paths/path_curve.png": {
+      "url": "/assets/game/world-map/paths/path_curve.png",
+      "width": 256,
+      "height": 256
+    },
+    "world-map/paths/path_junction.png": {
+      "url": "/assets/game/world-map/paths/path_junction.png",
+      "width": 256,
+      "height": 256
+    },
+    "world-map/paths/stepping_stones.png": {
+      "url": "/assets/game/world-map/paths/stepping_stones.png",
+      "width": 390,
+      "height": 130
+    },
+    "world-map/paths/portal_blue.png": {
+      "url": "/assets/game/world-map/paths/portal_blue.png",
+      "width": 256,
+      "height": 256
+    },
+    "world-map/paths/portal_purple.png": {
+      "url": "/assets/game/world-map/paths/portal_purple.png",
+      "width": 256,
+      "height": 256
+    },
+    "world-map/paths/portal_gold.png": {
+      "url": "/assets/game/world-map/paths/portal_gold.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/listening/node.png": {
+      "url": "/assets/game/level-nodes/listening/node.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/listening/icon.png": {
+      "url": "/assets/game/level-nodes/listening/icon.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/listening/node_highlighted.png": {
+      "url": "/assets/game/level-nodes/listening/node_highlighted.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/reading/node.png": {
+      "url": "/assets/game/level-nodes/reading/node.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/reading/icon.png": {
+      "url": "/assets/game/level-nodes/reading/icon.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/reading/node_highlighted.png": {
+      "url": "/assets/game/level-nodes/reading/node_highlighted.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/spelling/node.png": {
+      "url": "/assets/game/level-nodes/spelling/node.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/spelling/icon.png": {
+      "url": "/assets/game/level-nodes/spelling/icon.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/spelling/node_highlighted.png": {
+      "url": "/assets/game/level-nodes/spelling/node_highlighted.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/speaking/node.png": {
+      "url": "/assets/game/level-nodes/speaking/node.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/speaking/icon.png": {
+      "url": "/assets/game/level-nodes/speaking/icon.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/speaking/node_highlighted.png": {
+      "url": "/assets/game/level-nodes/speaking/node_highlighted.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/available.png": {
+      "url": "/assets/game/level-nodes/states/available.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/current.png": {
+      "url": "/assets/game/level-nodes/states/current.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/completed.png": {
+      "url": "/assets/game/level-nodes/states/completed.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/locked.png": {
+      "url": "/assets/game/level-nodes/states/locked.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/review.png": {
+      "url": "/assets/game/level-nodes/states/review.png",
+      "width": 256,
+      "height": 256
+    },
+    "level-nodes/states/star_full.png": {
+      "url": "/assets/game/level-nodes/states/star_full.png",
+      "width": 92,
+      "height": 92
+    },
+    "level-nodes/states/star_empty.png": {
+      "url": "/assets/game/level-nodes/states/star_empty.png",
+      "width": 92,
+      "height": 92
+    },
+    "level-nodes/states/lock.png": {
+      "url": "/assets/game/level-nodes/states/lock.png",
+      "width": 120,
+      "height": 140
+    },
+    "level-nodes/states/current_glow.png": {
+      "url": "/assets/game/level-nodes/states/current_glow.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_red.png": {
+      "url": "/assets/game/dragon/baby/baby_red.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_blue.png": {
+      "url": "/assets/game/dragon/baby/baby_blue.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_green.png": {
+      "url": "/assets/game/dragon/baby/baby_green.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_purple.png": {
+      "url": "/assets/game/dragon/baby/baby_purple.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_pink.png": {
+      "url": "/assets/game/dragon/baby/baby_pink.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/baby/baby_yellow.png": {
+      "url": "/assets/game/dragon/baby/baby_yellow.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/idle_00.png": {
+      "url": "/assets/game/dragon/animations/idle_00.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/idle_01.png": {
+      "url": "/assets/game/dragon/animations/idle_01.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/idle_02.png": {
+      "url": "/assets/game/dragon/animations/idle_02.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/idle_03.png": {
+      "url": "/assets/game/dragon/animations/idle_03.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/walk_00.png": {
+      "url": "/assets/game/dragon/animations/walk_00.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/walk_01.png": {
+      "url": "/assets/game/dragon/animations/walk_01.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/walk_02.png": {
+      "url": "/assets/game/dragon/animations/walk_02.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/walk_03.png": {
+      "url": "/assets/game/dragon/animations/walk_03.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/fly_00.png": {
+      "url": "/assets/game/dragon/animations/fly_00.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/fly_01.png": {
+      "url": "/assets/game/dragon/animations/fly_01.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/fly_02.png": {
+      "url": "/assets/game/dragon/animations/fly_02.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/fly_03.png": {
+      "url": "/assets/game/dragon/animations/fly_03.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/eat_00.png": {
+      "url": "/assets/game/dragon/animations/eat_00.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/eat_01.png": {
+      "url": "/assets/game/dragon/animations/eat_01.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/eat_02.png": {
+      "url": "/assets/game/dragon/animations/eat_02.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/eat_03.png": {
+      "url": "/assets/game/dragon/animations/eat_03.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/happy_00.png": {
+      "url": "/assets/game/dragon/animations/happy_00.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/happy_01.png": {
+      "url": "/assets/game/dragon/animations/happy_01.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/happy_02.png": {
+      "url": "/assets/game/dragon/animations/happy_02.png",
+      "width": 256,
+      "height": 256
+    },
+    "dragon/animations/happy_03.png": {
+      "url": "/assets/game/dragon/animations/happy_03.png",
+      "width": 256,
+      "height": 256
+    },
+    "ui/icons/star.png": {
+      "url": "/assets/game/ui/icons/star.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/heart.png": {
+      "url": "/assets/game/ui/icons/heart.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/coin.png": {
+      "url": "/assets/game/ui/icons/coin.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/gem.png": {
+      "url": "/assets/game/ui/icons/gem.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/apple.png": {
+      "url": "/assets/game/ui/icons/apple.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/meat.png": {
+      "url": "/assets/game/ui/icons/meat.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/exp.png": {
+      "url": "/assets/game/ui/icons/exp.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/trophy.png": {
+      "url": "/assets/game/ui/icons/trophy.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/key.png": {
+      "url": "/assets/game/ui/icons/key.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/clock.png": {
+      "url": "/assets/game/ui/icons/clock.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/check.png": {
+      "url": "/assets/game/ui/icons/check.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/cross.png": {
+      "url": "/assets/game/ui/icons/cross.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/lock.png": {
+      "url": "/assets/game/ui/icons/lock.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/book.png": {
+      "url": "/assets/game/ui/icons/book.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/headphones.png": {
+      "url": "/assets/game/ui/icons/headphones.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/abc.png": {
+      "url": "/assets/game/ui/icons/abc.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/microphone.png": {
+      "url": "/assets/game/ui/icons/microphone.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/fire.png": {
+      "url": "/assets/game/ui/icons/fire.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/icons/food.png": {
+      "url": "/assets/game/ui/icons/food.png",
+      "width": 128,
+      "height": 128
+    },
+    "ui/buttons/play.png": {
+      "url": "/assets/game/ui/buttons/play.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/back.png": {
+      "url": "/assets/game/ui/buttons/back.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/next.png": {
+      "url": "/assets/game/ui/buttons/next.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/settings.png": {
+      "url": "/assets/game/ui/buttons/settings.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/home.png": {
+      "url": "/assets/game/ui/buttons/home.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/close.png": {
+      "url": "/assets/game/ui/buttons/close.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/sound_on.png": {
+      "url": "/assets/game/ui/buttons/sound_on.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/sound_off.png": {
+      "url": "/assets/game/ui/buttons/sound_off.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/pause.png": {
+      "url": "/assets/game/ui/buttons/pause.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/primary_blank.png": {
+      "url": "/assets/game/ui/buttons/primary_blank.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/secondary_blank.png": {
+      "url": "/assets/game/ui/buttons/secondary_blank.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/disabled_blank.png": {
+      "url": "/assets/game/ui/buttons/disabled_blank.png",
+      "width": 256,
+      "height": 128
+    },
+    "ui/buttons/arrow_left.png": {
+      "url": "/assets/game/ui/buttons/arrow_left.png",
+      "width": 240,
+      "height": 220
+    },
+    "ui/buttons/arrow_right.png": {
+      "url": "/assets/game/ui/buttons/arrow_right.png",
+      "width": 240,
+      "height": 220
+    },
+    "ui/panels/parchment.png": {
+      "url": "/assets/game/ui/panels/parchment.png",
+      "width": 600,
+      "height": 380
+    },
+    "ui/panels/wooden.png": {
+      "url": "/assets/game/ui/panels/wooden.png",
+      "width": 600,
+      "height": 240
+    },
+    "ui/panels/modal.png": {
+      "url": "/assets/game/ui/panels/modal.png",
+      "width": 650,
+      "height": 480
+    },
+    "ui/panels/speech_bubble.png": {
+      "url": "/assets/game/ui/panels/speech_bubble.png",
+      "width": 490,
+      "height": 280
+    },
+    "ui/panels/level_card.png": {
+      "url": "/assets/game/ui/panels/level_card.png",
+      "width": 390,
+      "height": 480
+    },
+    "ui/progress/bar_frame.png": {
+      "url": "/assets/game/ui/progress/bar_frame.png",
+      "width": 440,
+      "height": 80
+    },
+    "ui/progress/fill_exp.png": {
+      "url": "/assets/game/ui/progress/fill_exp.png",
+      "width": 420,
+      "height": 60
+    },
+    "ui/progress/fill_energy.png": {
+      "url": "/assets/game/ui/progress/fill_energy.png",
+      "width": 420,
+      "height": 60
+    },
+    "ui/progress/fill_time.png": {
+      "url": "/assets/game/ui/progress/fill_time.png",
+      "width": 420,
+      "height": 60
+    },
+    "ui/progress/fill_mastery.png": {
+      "url": "/assets/game/ui/progress/fill_mastery.png",
+      "width": 420,
+      "height": 60
+    },
+    "ui/progress/star_strip_empty.png": {
+      "url": "/assets/game/ui/progress/star_strip_empty.png",
+      "width": 300,
+      "height": 100
+    },
+    "ui/progress/star_strip_full.png": {
+      "url": "/assets/game/ui/progress/star_strip_full.png",
+      "width": 300,
+      "height": 100
+    }
+  },
+  "categories": {
+    "skills": [
+      "listening",
+      "reading",
+      "spelling",
+      "speaking"
+    ],
+    "islandThemes": [
+      "lair",
+      "forest",
+      "food",
+      "crystal",
+      "family",
+      "school",
+      "toys",
+      "nature",
+      "castle",
+      "ice",
+      "desert",
+      "grass"
+    ],
+    "dragonSkins": [
+      "red",
+      "blue",
+      "green",
+      "purple",
+      "pink",
+      "yellow"
+    ],
+    "nodeStates": [
+      "available",
+      "current",
+      "completed",
+      "locked",
+      "review"
+    ]
+  }
+}
