@@ -1,25 +1,102 @@
-name: M0 Foundation draft CI
-
+name: PLAT-001 Native CI
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
-  draft-gate:
-    runs-on: ubuntu-latest
+  verify:
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Placeholder validation step
-        run: |
-          echo "This workflow is a draft M0 placeholder for the neutral Foundation gate."
-          echo "No production runtime proof is implied by this file."
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.14.0
 
-      - name: Document presence guard
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.402
+
+      - name: Install PostgreSQL 17 natively
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-common ca-certificates curl
+          sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh -y
+          sudo apt-get update
+          sudo apt-get install --yes postgresql-17
+          sudo service postgresql start
+          server_version="$(sudo -u postgres psql --tuples-only --no-align --command='SHOW server_version')"
+          if [[ "$server_version" != "17.11" ]]; then
+            echo "Expected PostgreSQL 17.11; found ${server_version}." >&2
+            exit 1
+          fi
+          db_password="$(openssl rand -hex 32)"
+          echo "::add-mask::${db_password}"
+          sudo -u postgres psql --set=ON_ERROR_STOP=1 --command="CREATE ROLE plat_ci LOGIN PASSWORD '${db_password}'"
+          sudo -u postgres psql --set=ON_ERROR_STOP=1 --command="CREATE DATABASE plat_ci OWNER plat_ci"
+          printf 'ConnectionStrings__Default=Host=127.0.0.1;Port=5432;Database=plat_ci;Username=plat_ci;Password=%s\n' "${db_password}" >> "$GITHUB_ENV"
+
+      - name: Install JavaScript dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Restore .NET tools and packages
+        run: |
+          dotnet tool restore
+          dotnet restore apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --locked-mode
+
+      - name: Build
+        run: pnpm build
+
+      - name: Lint and format verification
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm test
+
+      - name: Verify required PLAT-001 documentation and API contract
         run: |
           test -f README.md
+          test -f docs/eng/dev-setup.md
           test -f docs/eng/toolchain-matrix.md
-          test -f docs/contracts/api.md
+          test -f specs/001-developer-environment-setup/contracts/health.openapi.yaml
+
+  secret-scan:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install pinned Gitleaks
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=8.30.1
+          archive="gitleaks_${version}_linux_x64.tar.gz"
+          base="https://github.com/gitleaks/gitleaks/releases/download/v${version}"
+          tool_dir="$RUNNER_TEMP/gitleaks"
+          mkdir -p "$tool_dir"
+          cd "$tool_dir"
+          curl --fail --silent --show-error --location "${base}/gitleaks_${version}_checksums.txt" -o checksums.txt
+          curl --fail --silent --show-error --location "${base}/${archive}" -o "${archive}"
+          grep "${archive}$" checksums.txt | sha256sum --check --status
+          tar -xzf "${archive}" gitleaks
+
+      - name: Scan repository for secrets
+        run: "$RUNNER_TEMP/gitleaks/gitleaks dir $GITHUB_WORKSPACE --redact=100 --exit-code 1 --no-banner"

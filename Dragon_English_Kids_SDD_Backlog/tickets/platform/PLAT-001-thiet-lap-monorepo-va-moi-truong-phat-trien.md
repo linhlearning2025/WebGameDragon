@@ -2,19 +2,23 @@
 id: PLAT-001
 title: "Thiết lập monorepo và môi trường phát triển"
 kind: feature-spec-ticket
-status: DRAFT
-spec_approval: required
+status: APPROVED
+spec_approval: approved
 priority: P0
 milestone: M0
 domain: platform
 dependencies: []
 source: "PRD §1; Tech Stack"
-stack: [react, phaser-3, dotnet, postgresql]
+stack: [react, typescript, vite, phaser-3, aspnet-core-10, ef-core-10, node-24, pnpm, postgresql-17, openapi, github-actions]
 ---
 
 # PLAT-001 — Thiết lập monorepo và môi trường phát triển
 
-> **Spec-driven ticket** · Domain: **Foundation & Architecture** · Priority: **P0** · Release: **M0** · **Trạng thái: DRAFT / chờ xác nhận**
+> **Spec-driven ticket** · Domain: **Foundation & Architecture** · Priority: **P0** · Release: **M0** · **Trạng thái: APPROVED (WHAT/scope)**
+
+**Approval record:** PLAT-001 WHAT/scope, exact technical baseline, and readiness behavior approved
+by the technical owner on 2026-10-19. See [toolchain matrix](../../../docs/eng/toolchain-matrix.md)
+and [versioned health contract](../../../specs/001-developer-environment-setup/contracts/health-readiness.md).
 
 ## 1. Business Context — WHY
 
@@ -60,7 +64,12 @@ Then build/lint/test tối thiểu được kiểm tra.
 ## 4. Contract & Data Impact
 
 - Repo `/apps/web`, `/apps/api`, `/tools/content-pipeline` (đề xuất).
-- Env: DATABASE_URL, R2_* và provider keys dùng secret store.
+- PostgreSQL 17 may be installed locally or hosted and MUST be configured through environment variables.
+- Local setup uses Node.js 24 LTS, pnpm, .NET SDK 10 LTS, and EF Core 10.
+- The approved API contract is versioned in `specs/001-developer-environment-setup/contracts/health.openapi.yaml`.
+- `GET /health/live` returns HTTP 200 while the process is alive; `GET /health/ready` returns HTTP 200 when PostgreSQL is reachable and HTTP 503 otherwise.
+- Env: `ConnectionStrings__Default`, R2_* and provider keys use environment/secret storage; secret values MUST NOT be committed.
+- Toolchain approval matrix: [docs/eng/toolchain-matrix.md](../../../docs/eng/toolchain-matrix.md)
 
 **Quy tắc hợp đồng:** OpenAPI / event payload / schema phải có ví dụ request-response và validation tương ứng trước khi merge. Nội dung **proposed** chưa được xem là API chính thức cho đến khi được review.
 
@@ -80,7 +89,7 @@ Then build/lint/test tối thiểu được kiểm tra.
 ## 7. Implementation Tasks — HOW (đề xuất, điều chỉnh ở bước `/speckit.plan`)
 
 - [ ] Tạo projects và package scripts
-- [ ] Cấu hình Docker Compose Postgres
+- [ ] Cấu hình kết nối PostgreSQL 17 bằng environment variables và hướng dẫn chạy EF Core migrations
 - [ ] Cài lint/test và CI
 - [ ] Viết quickstart.
 
@@ -92,7 +101,8 @@ Then build/lint/test tối thiểu được kiểm tra.
 
 ## 9. Open Decisions / Assumptions
 
-- Chốt monorepo hay multirepo; phiên bản .NET/Node/Phaser cần pin.
+- Resolved 2026-10-19: single repository; exact approved versions are listed in
+	`docs/eng/toolchain-matrix.md`.
 
 ## 10. Definition of Done (DoD)
 

@@ -1,0 +1,11 @@
+{
+  "name": "@dragon-english-kids/content-pipeline",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node src/index.ts",
+    "build": "node --check src/index.ts",
+    "lint": "pnpm exec biome check ."
+  }
+}

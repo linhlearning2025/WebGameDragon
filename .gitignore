@@ -1,0 +1,27 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# JavaScript / TypeScript
+node_modules/
+dist/
+build/
+coverage/
+*.log
+
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# Local data and editor state
+.DS_Store
+Thumbs.db
+*.tmp
+*.swp
+.vscode/
+.idea/

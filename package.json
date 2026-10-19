@@ -1,0 +1,20 @@
+{
+  "name": "dragon-english-kids",
+  "private": true,
+  "packageManager": "pnpm@12.14.0",
+  "engines": {
+    "node": "24.22.0"
+  },
+  "scripts": {
+    "build": "pnpm --recursive --if-present build && dotnet build apps/api/DragonEnglishKids.Api.csproj --no-restore",
+    "lint": "pnpm exec biome check apps/web tools/content-pipeline package.json pnpm-workspace.yaml biome.json && dotnet format apps/api/DragonEnglishKids.Api.csproj --verify-no-changes --no-restore && dotnet format apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --verify-no-changes --no-restore",
+    "test": "pnpm --recursive --if-present test && dotnet test apps/api/tests/DragonEnglishKids.Api.Tests/DragonEnglishKids.Api.Tests.csproj --no-build",
+    "dev:web": "pnpm --filter @dragon-english-kids/web dev",
+    "dev:api": "dotnet run --project apps/api/DragonEnglishKids.Api.csproj",
+    "dev:content": "pnpm --filter @dragon-english-kids/content-pipeline dev",
+    "db:migrate": "dotnet ef database update --project apps/api/DragonEnglishKids.Api.csproj --startup-project apps/api/DragonEnglishKids.Api.csproj"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15"
+  }
+}
