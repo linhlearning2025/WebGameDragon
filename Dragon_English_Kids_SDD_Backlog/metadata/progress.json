@@ -1,0 +1,292 @@
+{
+  "PLAT-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "QA-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PLAT-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PLAT-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PLAT-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "CONTENT-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PLAT-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "QA-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "ASSET-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "CONTENT-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GUEST-006": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "MAP-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "MAP-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "MAP-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "ASSET-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "ASSET-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "DRAGON-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "SRS-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "SRS-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PARENT-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "CONTENT-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "CONTENT-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "CONTENT-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "MAP-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-006": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-007": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-008": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-009": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "GAME-010": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "DRAGON-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "ASSET-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "DRAGON-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "QA-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "QA-003": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-007": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PARENT-001": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PARENT-002": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PARENT-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "DRAGON-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "PARENT-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "AUTH-006": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "DRAGON-004": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  },
+  "QA-005": {
+    "status": "TODO",
+    "pr": null,
+    "notes": ""
+  }
+}

@@ -1,0 +1,59 @@
+﻿sequence,ticket_id,milestone,priority,domain,dependencies,status,file
+1,PLAT-001,M0,P0,platform,,TODO,tickets/platform/PLAT-001-thiet-lap-monorepo-va-moi-truong-phat-trien.md
+2,QA-002,M0,P0,quality,PLAT-001,TODO,tickets/quality/QA-002-chinh-sach-du-lieu-tre-em-consent-va-bao-ve-thong-tin.md
+3,PLAT-003,M0,P0,platform,PLAT-001,TODO,tickets/platform/PLAT-003-postgresql-schema-migrations-va-domain-constraints.md
+4,PLAT-005,M0,P0,platform,PLAT-003,TODO,tickets/platform/PLAT-005-kiem-soat-truy-cap-theo-phu-huynh-tre-va-khach.md
+5,PLAT-002,M0,P0,platform,PLAT-001,TODO,tickets/platform/PLAT-002-event-bridge-react-phaser-co-kieu-du-lieu.md
+6,CONTENT-001,M0,P0,content,PLAT-003,TODO,tickets/content/CONTENT-001-vocabulary-catalog-metadata-schema-jsonb.md
+7,PLAT-004,M0,P1,platform,PLAT-001,TODO,tickets/platform/PLAT-004-correlation-id-logs-metrics-va-loi-chuan.md
+8,QA-001,M1,P0,quality,PLAT-001,TODO,tickets/quality/QA-001-ac-ta-accessibility-va-ux-an-toan-cho-tre-58.md
+9,ASSET-001,M1,P0,world-map,PLAT-001,TODO,tickets/world-map/ASSET-001-chuan-asset-manifest-va-preload-theo-phien-ban.md
+10,CONTENT-002,M1,P0,content,CONTENT-001,TODO,tickets/content/CONTENT-002-bo-du-lieu-chu-e-starters-movers-va-kiem-soat-trung.md
+11,GUEST-001,M1,P0,guest,PLAT-003,TODO,tickets/guest/GUEST-001-khoi-tao-phien-guest-va-chon-o-tuoi.md
+12,AUTH-001,M1,P0,identity,"PLAT-003, PLAT-005",TODO,tickets/identity/AUTH-001-ang-ky-ang-nhap-phu-huynh-bang-email.md
+13,AUTH-003,M1,P0,identity,AUTH-001,TODO,tickets/identity/AUTH-003-tao-chinh-sua-ho-so-tre-toi-a-5.md
+14,AUTH-005,M1,P0,identity,"AUTH-001, PLAT-005",TODO,tickets/identity/AUTH-005-parental-gate-voi-pin-bam-va-xac-thuc.md
+15,AUTH-004,M1,P0,identity,"AUTH-003, PLAT-002",TODO,tickets/identity/AUTH-004-chon-ho-so-tre-va-co-lap-session-game.md
+16,GUEST-003,M1,P0,guest,"GUEST-001, CONTENT-001",TODO,tickets/guest/GUEST-003-ngan-hang-cau-hoi-placement-va-ghi-nhan-cau-tra-loi.md
+17,GUEST-004,M1,P0,guest,GUEST-003,TODO,tickets/guest/GUEST-004-thuat-toan-placement-adaptive-va-phan-tang.md
+18,GUEST-002,M1,P0,guest,"GUEST-001, GUEST-003, PLAT-002",TODO,tickets/guest/GUEST-002-phaser-placement-scene-anh-thuc-trung-rong.md
+19,GUEST-005,M1,P0,guest,"GUEST-002, GUEST-004",TODO,tickets/guest/GUEST-005-no-trung-tao-rong-guest-va-tuy-chinh.md
+20,GUEST-006,M1,P0,guest,"GUEST-005, AUTH-001, AUTH-003",TODO,tickets/guest/GUEST-006-claim-guest-progress-vao-parent-account-mot-lan.md
+21,MAP-001,M1,P0,world-map,"CONTENT-001, PLAT-003",TODO,tickets/world-map/MAP-001-domain-model-ao-chu-e-va-tuyen-hoc.md
+22,MAP-002,M1,P0,world-map,"MAP-001, AUTH-003",TODO,tickets/world-map/MAP-002-quy-tac-mo-khoa-va-luu-stage-progress.md
+23,MAP-003,M1,P0,world-map,"MAP-001, MAP-002, PLAT-005",TODO,tickets/world-map/MAP-003-api-world-map-theo-profile-tier.md
+24,ASSET-002,M1,P0,world-map,"ASSET-001, PLAT-002",TODO,tickets/world-map/ASSET-002-world-map-responsive-voi-camera-va-hit-area.md
+25,ASSET-003,M1,P0,world-map,"ASSET-002, MAP-002, MAP-003",TODO,tickets/world-map/ASSET-003-rendering-4-node-ky-nang-va-trang-thai-hoan-thanh.md
+26,DRAGON-001,M1,P0,dragon,"AUTH-003, ASSET-001",TODO,tickets/dragon/DRAGON-001-hang-rong-render-state-va-ieu-huong.md
+27,SRS-001,M2,P0,srs,"CONTENT-001, AUTH-003",TODO,tickets/srs/SRS-001-domain-srs-mastery-streak-va-lich-on.md
+28,SRS-002,M2,P0,srs,"SRS-001, CONTENT-002",TODO,tickets/srs/SRS-002-query-tu-en-han-va-phan-phoi-pool-theo-tier.md
+29,PARENT-003,M2,P0,parent,"AUTH-003, PLAT-005",TODO,tickets/parent/PARENT-003-gioi-han-thoi-gian-choi-moi-ngay-co-server-policy.md
+30,CONTENT-003,M2,P1,content,"CONTENT-001, CONTENT-002",TODO,tickets/content/CONTENT-003-console-tool-c-sinh-noi-dung-ai-co-kiem-duyet.md
+31,CONTENT-004,M2,P1,content,CONTENT-003,TODO,tickets/content/CONTENT-004-tts-am-thanh-thuong-cham-va-upload-cloudflare-r2.md
+32,CONTENT-005,M2,P1,content,CONTENT-004,TODO,tickets/content/CONTENT-005-quy-trinh-review-publish-hoc-lieu-va-asset.md
+33,GAME-001,M2,P0,gameplay,"CONTENT-002, SRS-002, MAP-002",TODO,tickets/gameplay/GAME-001-stage-data-api-tron-70-moi-30-on-srs.md
+34,MAP-004,M2,P0,world-map,"ASSET-003, MAP-003, PLAT-002, GAME-001",TODO,tickets/world-map/MAP-004-chon-stage-va-chuyen-phaser-mini-game.md
+35,GAME-002,M2,P0,gameplay,"GAME-001, MAP-002, SRS-001",TODO,tickets/gameplay/GAME-002-ghi-nhan-ket-qua-stage-idempotent-va-chong-gian-lan.md
+36,GAME-003,M2,P0,gameplay,GAME-002,TODO,tickets/gameplay/GAME-003-quy-tac-thuong-food-exp-stars.md
+37,GAME-004,M2,P0,gameplay,"PLAT-002, GAME-001",TODO,tickets/gameplay/GAME-004-khung-mini-game-chung-trang-thai-va-phan-hoi-tich-cuc.md
+38,GAME-005,M2,P0,gameplay,GAME-004,TODO,tickets/gameplay/GAME-005-listening-rong-op-may-ung-hinh.md
+39,GAME-006,M2,P0,gameplay,GAME-004,TODO,tickets/gameplay/GAME-006-reading-chon-tu-pha-a.md
+40,GAME-007,M2,P0,gameplay,"GAME-004, CONTENT-001",TODO,tickets/gameplay/GAME-007-spelling-ghep-phonics-xay-cau.md
+41,GAME-008,M2,P0,gameplay,GAME-004,TODO,tickets/gameplay/GAME-008-speaking-quyen-micro-capture-va-fallback.md
+42,GAME-009,M2,P0,gameplay,"GAME-008, GAME-002",TODO,tickets/gameplay/GAME-009-speaking-fuzzy-matching-va-2-strike-effort-pass.md
+43,GAME-010,M2,P0,gameplay,"GAME-002, GAME-003, MAP-004",TODO,tickets/gameplay/GAME-010-stage-summary-replay-va-quay-lai-world-map.md
+44,DRAGON-002,M2,P0,dragon,"DRAGON-001, GAME-003",TODO,tickets/dragon/DRAGON-002-cho-rong-an-tieu-hao-food-cong-exp.md
+45,ASSET-004,M2,P1,world-map,"ASSET-001, DRAGON-001",TODO,tickets/world-map/ASSET-004-sprite-rong-mau-sac-va-animation-states.md
+46,DRAGON-003,M2,P1,dragon,"DRAGON-002, ASSET-004",TODO,tickets/dragon/DRAGON-003-tien-hoa-rong-5-cap-theo-exp.md
+47,QA-004,M2,P1,quality,"CONTENT-004, GAME-005, ASSET-001",TODO,tickets/quality/QA-004-hieu-nang-am-thanh-preload-va-r2-cdn.md
+48,QA-003,M2,P0,quality,"GAME-005, GAME-006, GAME-007, GAME-009, MAP-003, GUEST-006, GAME-010, DRAGON-002",TODO,tickets/quality/QA-003-contract-tests-va-e2e-4-mini-game-qua-backend.md
+49,AUTH-002,M2,P1,identity,AUTH-001,TODO,tickets/identity/AUTH-002-ang-nhap-google-oauth-phu-huynh.md
+50,AUTH-007,M3,P1,identity,"AUTH-003, PLAT-005",TODO,tickets/identity/AUTH-007-xoa-tai-khoan-ho-so-va-xuat-du-lieu-co-ban.md
+51,PARENT-001,M3,P1,parent,"AUTH-003, SRS-001, GAME-002",TODO,tickets/parent/PARENT-001-api-bao-cao-tien-trinh-tu-vung-va-thoi-gian.md
+52,PARENT-002,M3,P1,parent,"PARENT-001, AUTH-005",TODO,tickets/parent/PARENT-002-parent-dashboard-ui-co-loc-theo-be.md
+53,PARENT-004,M3,P2,parent,"AUTH-005, AUTH-001",TODO,tickets/parent/PARENT-004-donate-qr-va-trang-thai-supporter.md
+54,DRAGON-005,M3,P2,dragon,"DRAGON-001, PARENT-004",TODO,tickets/dragon/DRAGON-005-trang-phuc-rong-va-entitlement-cosmetics.md
+55,PARENT-005,M3,P2,parent,"PARENT-004, DRAGON-005",TODO,tickets/parent/PARENT-005-huy-hieu-supporter-va-skin-oc-quyen.md
+56,AUTH-006,M3,P2,identity,AUTH-005,TODO,tickets/identity/AUTH-006-parental-gate-thay-the-bang-cau-hoi-toan.md
+57,DRAGON-004,M3,P2,dragon,DRAGON-001,TODO,tickets/dragon/DRAGON-004-tuong-tac-vuot-ve-rong-tang-mood.md
+58,QA-005,M3,P1,quality,"PLAT-004, QA-003",TODO,tickets/quality/QA-005-phat-hanh-backup-restore-feature-flags-va-runbook.md

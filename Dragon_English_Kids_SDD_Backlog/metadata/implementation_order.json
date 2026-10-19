@@ -1,0 +1,807 @@
+[
+  {
+    "sequence": 1,
+    "id": "PLAT-001",
+    "title": "Thiết lập monorepo và môi trường phát triển",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "platform",
+    "dependencies": [],
+    "file": "tickets/platform/PLAT-001-thiet-lap-monorepo-va-moi-truong-phat-trien.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 2,
+    "id": "QA-002",
+    "title": "Chính sách dữ liệu trẻ em, consent và bảo vệ thông tin",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "quality",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/quality/QA-002-chinh-sach-du-lieu-tre-em-consent-va-bao-ve-thong-tin.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 3,
+    "id": "PLAT-003",
+    "title": "PostgreSQL schema, migrations và domain constraints",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "platform",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/platform/PLAT-003-postgresql-schema-migrations-va-domain-constraints.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 4,
+    "id": "PLAT-005",
+    "title": "Kiểm soát truy cập theo phụ huynh, trẻ và khách",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "platform",
+    "dependencies": [
+      "PLAT-003"
+    ],
+    "file": "tickets/platform/PLAT-005-kiem-soat-truy-cap-theo-phu-huynh-tre-va-khach.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 5,
+    "id": "PLAT-002",
+    "title": "Event Bridge React ↔ Phaser có kiểu dữ liệu",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "platform",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/platform/PLAT-002-event-bridge-react-phaser-co-kieu-du-lieu.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 6,
+    "id": "CONTENT-001",
+    "title": "Vocabulary catalog + metadata schema JSONB",
+    "milestone": "M0",
+    "priority": "P0",
+    "domain": "content",
+    "dependencies": [
+      "PLAT-003"
+    ],
+    "file": "tickets/content/CONTENT-001-vocabulary-catalog-metadata-schema-jsonb.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 7,
+    "id": "PLAT-004",
+    "title": "Correlation ID, logs, metrics và lỗi chuẩn",
+    "milestone": "M0",
+    "priority": "P1",
+    "domain": "platform",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/platform/PLAT-004-correlation-id-logs-metrics-va-loi-chuan.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 8,
+    "id": "QA-001",
+    "title": "Đặc tả accessibility và UX an toàn cho trẻ 5–8",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "quality",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/quality/QA-001-ac-ta-accessibility-va-ux-an-toan-cho-tre-58.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 9,
+    "id": "ASSET-001",
+    "title": "Chuẩn asset manifest và preload theo phiên bản",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "PLAT-001"
+    ],
+    "file": "tickets/world-map/ASSET-001-chuan-asset-manifest-va-preload-theo-phien-ban.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 10,
+    "id": "CONTENT-002",
+    "title": "Bộ dữ liệu chủ đề STARTERS/MOVERS và kiểm soát trùng",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "content",
+    "dependencies": [
+      "CONTENT-001"
+    ],
+    "file": "tickets/content/CONTENT-002-bo-du-lieu-chu-e-starters-movers-va-kiem-soat-trung.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 11,
+    "id": "GUEST-001",
+    "title": "Khởi tạo phiên guest và chọn độ tuổi",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "PLAT-003"
+    ],
+    "file": "tickets/guest/GUEST-001-khoi-tao-phien-guest-va-chon-o-tuoi.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 12,
+    "id": "AUTH-001",
+    "title": "Đăng ký/đăng nhập phụ huynh bằng email",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "identity",
+    "dependencies": [
+      "PLAT-003",
+      "PLAT-005"
+    ],
+    "file": "tickets/identity/AUTH-001-ang-ky-ang-nhap-phu-huynh-bang-email.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 13,
+    "id": "AUTH-003",
+    "title": "Tạo/chỉnh sửa hồ sơ trẻ tối đa 5",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-001"
+    ],
+    "file": "tickets/identity/AUTH-003-tao-chinh-sua-ho-so-tre-toi-a-5.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 14,
+    "id": "AUTH-005",
+    "title": "Parental Gate với PIN băm và xác thực",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-001",
+      "PLAT-005"
+    ],
+    "file": "tickets/identity/AUTH-005-parental-gate-voi-pin-bam-va-xac-thuc.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 15,
+    "id": "AUTH-004",
+    "title": "Chọn hồ sơ trẻ và cô lập session game",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-003",
+      "PLAT-002"
+    ],
+    "file": "tickets/identity/AUTH-004-chon-ho-so-tre-va-co-lap-session-game.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 16,
+    "id": "GUEST-003",
+    "title": "Ngân hàng câu hỏi placement và ghi nhận câu trả lời",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "GUEST-001",
+      "CONTENT-001"
+    ],
+    "file": "tickets/guest/GUEST-003-ngan-hang-cau-hoi-placement-va-ghi-nhan-cau-tra-loi.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 17,
+    "id": "GUEST-004",
+    "title": "Thuật toán placement adaptive và phân tầng",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "GUEST-003"
+    ],
+    "file": "tickets/guest/GUEST-004-thuat-toan-placement-adaptive-va-phan-tang.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 18,
+    "id": "GUEST-002",
+    "title": "Phaser Placement Scene “Đánh thức Trứng Rồng”",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "GUEST-001",
+      "GUEST-003",
+      "PLAT-002"
+    ],
+    "file": "tickets/guest/GUEST-002-phaser-placement-scene-anh-thuc-trung-rong.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 19,
+    "id": "GUEST-005",
+    "title": "Nở trứng, tạo Rồng guest và tùy chỉnh",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "GUEST-002",
+      "GUEST-004"
+    ],
+    "file": "tickets/guest/GUEST-005-no-trung-tao-rong-guest-va-tuy-chinh.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 20,
+    "id": "GUEST-006",
+    "title": "Claim guest progress vào parent account một lần",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "guest",
+    "dependencies": [
+      "GUEST-005",
+      "AUTH-001",
+      "AUTH-003"
+    ],
+    "file": "tickets/guest/GUEST-006-claim-guest-progress-vao-parent-account-mot-lan.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 21,
+    "id": "MAP-001",
+    "title": "Domain model đảo, chủ đề và tuyến học",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "CONTENT-001",
+      "PLAT-003"
+    ],
+    "file": "tickets/world-map/MAP-001-domain-model-ao-chu-e-va-tuyen-hoc.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 22,
+    "id": "MAP-002",
+    "title": "Quy tắc mở khóa và lưu stage progress",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "MAP-001",
+      "AUTH-003"
+    ],
+    "file": "tickets/world-map/MAP-002-quy-tac-mo-khoa-va-luu-stage-progress.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 23,
+    "id": "MAP-003",
+    "title": "API world map theo profile + tier",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "MAP-001",
+      "MAP-002",
+      "PLAT-005"
+    ],
+    "file": "tickets/world-map/MAP-003-api-world-map-theo-profile-tier.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 24,
+    "id": "ASSET-002",
+    "title": "World Map responsive với camera và hit area",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "ASSET-001",
+      "PLAT-002"
+    ],
+    "file": "tickets/world-map/ASSET-002-world-map-responsive-voi-camera-va-hit-area.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 25,
+    "id": "ASSET-003",
+    "title": "Rendering 4 node kỹ năng và trạng thái hoàn thành",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "ASSET-002",
+      "MAP-002",
+      "MAP-003"
+    ],
+    "file": "tickets/world-map/ASSET-003-rendering-4-node-ky-nang-va-trang-thai-hoan-thanh.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 26,
+    "id": "DRAGON-001",
+    "title": "Hang Rồng render state và điều hướng",
+    "milestone": "M1",
+    "priority": "P0",
+    "domain": "dragon",
+    "dependencies": [
+      "AUTH-003",
+      "ASSET-001"
+    ],
+    "file": "tickets/dragon/DRAGON-001-hang-rong-render-state-va-ieu-huong.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 27,
+    "id": "SRS-001",
+    "title": "Domain SRS mastery, streak và lịch ôn",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "srs",
+    "dependencies": [
+      "CONTENT-001",
+      "AUTH-003"
+    ],
+    "file": "tickets/srs/SRS-001-domain-srs-mastery-streak-va-lich-on.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 28,
+    "id": "SRS-002",
+    "title": "Query từ đến hạn và phân phối pool theo tier",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "srs",
+    "dependencies": [
+      "SRS-001",
+      "CONTENT-002"
+    ],
+    "file": "tickets/srs/SRS-002-query-tu-en-han-va-phan-phoi-pool-theo-tier.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 29,
+    "id": "PARENT-003",
+    "title": "Giới hạn thời gian chơi mỗi ngày có server policy",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "parent",
+    "dependencies": [
+      "AUTH-003",
+      "PLAT-005"
+    ],
+    "file": "tickets/parent/PARENT-003-gioi-han-thoi-gian-choi-moi-ngay-co-server-policy.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 30,
+    "id": "CONTENT-003",
+    "title": "Console Tool C# sinh nội dung AI có kiểm duyệt",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "content",
+    "dependencies": [
+      "CONTENT-001",
+      "CONTENT-002"
+    ],
+    "file": "tickets/content/CONTENT-003-console-tool-c-sinh-noi-dung-ai-co-kiem-duyet.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 31,
+    "id": "CONTENT-004",
+    "title": "TTS âm thanh thường/chậm và upload Cloudflare R2",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "content",
+    "dependencies": [
+      "CONTENT-003"
+    ],
+    "file": "tickets/content/CONTENT-004-tts-am-thanh-thuong-cham-va-upload-cloudflare-r2.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 32,
+    "id": "CONTENT-005",
+    "title": "Quy trình review/publish học liệu và asset",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "content",
+    "dependencies": [
+      "CONTENT-004"
+    ],
+    "file": "tickets/content/CONTENT-005-quy-trinh-review-publish-hoc-lieu-va-asset.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 33,
+    "id": "GAME-001",
+    "title": "Stage-data API trộn 70% mới / 30% ôn SRS",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "CONTENT-002",
+      "SRS-002",
+      "MAP-002"
+    ],
+    "file": "tickets/gameplay/GAME-001-stage-data-api-tron-70-moi-30-on-srs.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 34,
+    "id": "MAP-004",
+    "title": "Chọn stage và chuyển Phaser mini-game",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "world-map",
+    "dependencies": [
+      "ASSET-003",
+      "MAP-003",
+      "PLAT-002",
+      "GAME-001"
+    ],
+    "file": "tickets/world-map/MAP-004-chon-stage-va-chuyen-phaser-mini-game.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 35,
+    "id": "GAME-002",
+    "title": "Ghi nhận kết quả stage idempotent và chống gian lận",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-001",
+      "MAP-002",
+      "SRS-001"
+    ],
+    "file": "tickets/gameplay/GAME-002-ghi-nhan-ket-qua-stage-idempotent-va-chong-gian-lan.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 36,
+    "id": "GAME-003",
+    "title": "Quy tắc thưởng food, EXP, stars",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-002"
+    ],
+    "file": "tickets/gameplay/GAME-003-quy-tac-thuong-food-exp-stars.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 37,
+    "id": "GAME-004",
+    "title": "Khung mini-game chung, trạng thái và phản hồi tích cực",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "PLAT-002",
+      "GAME-001"
+    ],
+    "file": "tickets/gameplay/GAME-004-khung-mini-game-chung-trang-thai-va-phan-hoi-tich-cuc.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 38,
+    "id": "GAME-005",
+    "title": "Listening — Rồng đớp mây đúng hình",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-004"
+    ],
+    "file": "tickets/gameplay/GAME-005-listening-rong-op-may-ung-hinh.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 39,
+    "id": "GAME-006",
+    "title": "Reading — chọn từ phá đá",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-004"
+    ],
+    "file": "tickets/gameplay/GAME-006-reading-chon-tu-pha-a.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 40,
+    "id": "GAME-007",
+    "title": "Spelling — ghép phonics xây cầu",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-004",
+      "CONTENT-001"
+    ],
+    "file": "tickets/gameplay/GAME-007-spelling-ghep-phonics-xay-cau.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 41,
+    "id": "GAME-008",
+    "title": "Speaking — quyền micro, capture và fallback",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-004"
+    ],
+    "file": "tickets/gameplay/GAME-008-speaking-quyen-micro-capture-va-fallback.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 42,
+    "id": "GAME-009",
+    "title": "Speaking — fuzzy matching và 2-strike effort-pass",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-008",
+      "GAME-002"
+    ],
+    "file": "tickets/gameplay/GAME-009-speaking-fuzzy-matching-va-2-strike-effort-pass.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 43,
+    "id": "GAME-010",
+    "title": "Stage summary, replay và quay lại World Map",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "gameplay",
+    "dependencies": [
+      "GAME-002",
+      "GAME-003",
+      "MAP-004"
+    ],
+    "file": "tickets/gameplay/GAME-010-stage-summary-replay-va-quay-lai-world-map.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 44,
+    "id": "DRAGON-002",
+    "title": "Cho Rồng ăn: tiêu hao food, cộng EXP",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "dragon",
+    "dependencies": [
+      "DRAGON-001",
+      "GAME-003"
+    ],
+    "file": "tickets/dragon/DRAGON-002-cho-rong-an-tieu-hao-food-cong-exp.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 45,
+    "id": "ASSET-004",
+    "title": "Sprite Rồng màu sắc và animation states",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "world-map",
+    "dependencies": [
+      "ASSET-001",
+      "DRAGON-001"
+    ],
+    "file": "tickets/world-map/ASSET-004-sprite-rong-mau-sac-va-animation-states.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 46,
+    "id": "DRAGON-003",
+    "title": "Tiến hóa Rồng 5 cấp theo EXP",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "dragon",
+    "dependencies": [
+      "DRAGON-002",
+      "ASSET-004"
+    ],
+    "file": "tickets/dragon/DRAGON-003-tien-hoa-rong-5-cap-theo-exp.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 47,
+    "id": "QA-004",
+    "title": "Hiệu năng âm thanh, preload và R2 CDN",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "quality",
+    "dependencies": [
+      "CONTENT-004",
+      "GAME-005",
+      "ASSET-001"
+    ],
+    "file": "tickets/quality/QA-004-hieu-nang-am-thanh-preload-va-r2-cdn.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 48,
+    "id": "QA-003",
+    "title": "Contract tests và E2E 4 mini-game qua backend",
+    "milestone": "M2",
+    "priority": "P0",
+    "domain": "quality",
+    "dependencies": [
+      "GAME-005",
+      "GAME-006",
+      "GAME-007",
+      "GAME-009",
+      "MAP-003",
+      "GUEST-006",
+      "GAME-010",
+      "DRAGON-002"
+    ],
+    "file": "tickets/quality/QA-003-contract-tests-va-e2e-4-mini-game-qua-backend.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 49,
+    "id": "AUTH-002",
+    "title": "Đăng nhập Google OAuth phụ huynh",
+    "milestone": "M2",
+    "priority": "P1",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-001"
+    ],
+    "file": "tickets/identity/AUTH-002-ang-nhap-google-oauth-phu-huynh.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 50,
+    "id": "AUTH-007",
+    "title": "Xóa tài khoản/hồ sơ và xuất dữ liệu cơ bản",
+    "milestone": "M3",
+    "priority": "P1",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-003",
+      "PLAT-005"
+    ],
+    "file": "tickets/identity/AUTH-007-xoa-tai-khoan-ho-so-va-xuat-du-lieu-co-ban.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 51,
+    "id": "PARENT-001",
+    "title": "API báo cáo tiến trình từ vựng và thời gian",
+    "milestone": "M3",
+    "priority": "P1",
+    "domain": "parent",
+    "dependencies": [
+      "AUTH-003",
+      "SRS-001",
+      "GAME-002"
+    ],
+    "file": "tickets/parent/PARENT-001-api-bao-cao-tien-trinh-tu-vung-va-thoi-gian.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 52,
+    "id": "PARENT-002",
+    "title": "Parent Dashboard UI có lọc theo bé",
+    "milestone": "M3",
+    "priority": "P1",
+    "domain": "parent",
+    "dependencies": [
+      "PARENT-001",
+      "AUTH-005"
+    ],
+    "file": "tickets/parent/PARENT-002-parent-dashboard-ui-co-loc-theo-be.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 53,
+    "id": "PARENT-004",
+    "title": "Donate QR và trạng thái supporter",
+    "milestone": "M3",
+    "priority": "P2",
+    "domain": "parent",
+    "dependencies": [
+      "AUTH-005",
+      "AUTH-001"
+    ],
+    "file": "tickets/parent/PARENT-004-donate-qr-va-trang-thai-supporter.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 54,
+    "id": "DRAGON-005",
+    "title": "Trang phục Rồng và entitlement cosmetics",
+    "milestone": "M3",
+    "priority": "P2",
+    "domain": "dragon",
+    "dependencies": [
+      "DRAGON-001",
+      "PARENT-004"
+    ],
+    "file": "tickets/dragon/DRAGON-005-trang-phuc-rong-va-entitlement-cosmetics.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 55,
+    "id": "PARENT-005",
+    "title": "Huy hiệu supporter và skin độc quyền",
+    "milestone": "M3",
+    "priority": "P2",
+    "domain": "parent",
+    "dependencies": [
+      "PARENT-004",
+      "DRAGON-005"
+    ],
+    "file": "tickets/parent/PARENT-005-huy-hieu-supporter-va-skin-oc-quyen.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 56,
+    "id": "AUTH-006",
+    "title": "Parental Gate thay thế bằng câu hỏi toán",
+    "milestone": "M3",
+    "priority": "P2",
+    "domain": "identity",
+    "dependencies": [
+      "AUTH-005"
+    ],
+    "file": "tickets/identity/AUTH-006-parental-gate-thay-the-bang-cau-hoi-toan.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 57,
+    "id": "DRAGON-004",
+    "title": "Tương tác vuốt ve Rồng tăng Mood",
+    "milestone": "M3",
+    "priority": "P2",
+    "domain": "dragon",
+    "dependencies": [
+      "DRAGON-001"
+    ],
+    "file": "tickets/dragon/DRAGON-004-tuong-tac-vuot-ve-rong-tang-mood.md",
+    "default_status": "TODO"
+  },
+  {
+    "sequence": 58,
+    "id": "QA-005",
+    "title": "Phát hành, backup/restore, feature flags và runbook",
+    "milestone": "M3",
+    "priority": "P1",
+    "domain": "quality",
+    "dependencies": [
+      "PLAT-004",
+      "QA-003"
+    ],
+    "file": "tickets/quality/QA-005-phat-hanh-backup-restore-feature-flags-va-runbook.md",
+    "default_status": "TODO"
+  }
+]

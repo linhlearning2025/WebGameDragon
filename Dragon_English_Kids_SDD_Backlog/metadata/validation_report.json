@@ -1,0 +1,117 @@
+{
+  "generated_on": "2026-10-19",
+  "ticket_count": 58,
+  "ticket_files": 58,
+  "domain_counts": {
+    "platform": 5,
+    "identity": 7,
+    "guest": 6,
+    "content": 5,
+    "world-map": 8,
+    "dragon": 5,
+    "gameplay": 10,
+    "srs": 2,
+    "parent": 5,
+    "quality": 5
+  },
+  "milestone_counts": {
+    "M0": 7,
+    "M1": 19,
+    "M2": 23,
+    "M3": 9
+  },
+  "priority_counts": {
+    "P0": 41,
+    "P1": 12,
+    "P2": 5
+  },
+  "execution_order_valid": true,
+  "dependency_ids_valid": true,
+  "dependency_graph_acyclic": true,
+  "dependencies_precede_ticket": true,
+  "milestones_monotonic": true,
+  "changed_hard_dependencies": {
+    "ASSET-003": [
+      "MAP-003"
+    ],
+    "MAP-004": [
+      "GAME-001"
+    ],
+    "QA-003": [
+      "GUEST-006",
+      "GAME-010",
+      "DRAGON-002"
+    ]
+  },
+  "changed_milestones": {
+    "MAP-004": [
+      "M1",
+      "M2"
+    ]
+  },
+  "topological_order": [
+    "PLAT-001",
+    "QA-002",
+    "PLAT-003",
+    "PLAT-005",
+    "PLAT-002",
+    "CONTENT-001",
+    "PLAT-004",
+    "QA-001",
+    "ASSET-001",
+    "CONTENT-002",
+    "GUEST-001",
+    "AUTH-001",
+    "AUTH-003",
+    "AUTH-005",
+    "AUTH-004",
+    "GUEST-003",
+    "GUEST-004",
+    "GUEST-002",
+    "GUEST-005",
+    "GUEST-006",
+    "MAP-001",
+    "MAP-002",
+    "MAP-003",
+    "ASSET-002",
+    "ASSET-003",
+    "DRAGON-001",
+    "SRS-001",
+    "SRS-002",
+    "PARENT-003",
+    "CONTENT-003",
+    "CONTENT-004",
+    "CONTENT-005",
+    "GAME-001",
+    "MAP-004",
+    "GAME-002",
+    "GAME-003",
+    "GAME-004",
+    "GAME-005",
+    "GAME-006",
+    "GAME-007",
+    "GAME-008",
+    "GAME-009",
+    "GAME-010",
+    "DRAGON-002",
+    "ASSET-004",
+    "DRAGON-003",
+    "QA-004",
+    "QA-003",
+    "AUTH-002",
+    "AUTH-007",
+    "PARENT-001",
+    "PARENT-002",
+    "PARENT-004",
+    "DRAGON-005",
+    "PARENT-005",
+    "AUTH-006",
+    "DRAGON-004",
+    "QA-005"
+  ],
+  "notes": [
+    "All ticket IDs and ticket paths unchanged",
+    "M1 demo does not deliver integrated navigation to gameplay; MAP-004 in M2",
+    "Business decision approvals and media licensing remain separate launch gates"
+  ]
+}
